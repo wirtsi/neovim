@@ -8,7 +8,6 @@ return packer.startup(
         use 'famiu/nvim-reload'
 
         -- color related stuff
-        use "siduck76/nvim-base16.lua"
         use "norcalli/nvim-colorizer.lua"
 	use 'shaunsingh/nord.nvim'
 
@@ -27,6 +26,8 @@ return packer.startup(
         use "windwp/nvim-autopairs"
         use "alvan/vim-closetag"
         use "folke/trouble.nvim"
+        use 'editorconfig/editorconfig-vim'
+        use 'mg979/vim-visual-multi'
 
         -- Comment
         use "terrortylor/nvim-comment"

@@ -9,6 +9,8 @@ require "statusline"
 require("colorizer").setup()
 require("neoscroll").setup() -- smooth scroll
 
+require("multiline")
+
 -- lsp stuff
 require "nvim-lspconfig"
 require "compe-completion"
@@ -57,7 +59,6 @@ vim.api.nvim_exec(
     false
 )
 
-require "zenmode"
 require "whichkey"
 require "dashboard"
 require("nvim_comment").setup()

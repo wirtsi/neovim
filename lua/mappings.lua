@@ -27,10 +27,6 @@ map("v", "x", [=[ "_x ]=], opt)
 -- toggle numbers ---
 -- map("n", "<leader>nn", [[ <Cmd> set nu!<CR>]], opt)
 
--- toggle truezen.nvim's ataraxis and minimalist mode
-map("n", "<leader>z", [[ <Cmd> TZAtaraxis<CR>]], opt)
-map("n", "<leader>m", [[ <Cmd> TZMinimalist<CR>]], opt)
-
 -- map("n", "<C-s>", [[ <Cmd> w <CR>]], opt)
 -- vim.cmd("inoremap jh <Esc>")
 
