@@ -22,12 +22,8 @@ g.auto_save = 0
 -- colorscheme related stuff
 cmd "syntax on"
 
--- local base16 = require "base16"
--- base16(base16.themes["onedark"], true)
-
 require('nord').set()
 
-require "highlights"
 
 -- blankline
 
@@ -45,7 +41,6 @@ require "mappings"
 
 require "telescope-nvim"
 require "nvimTree" -- file tree stuff
-require "file-icons"
 
 -- git signs , lsp symbols etc
 require "gitsigns-nvim"

@@ -23,17 +23,13 @@ return packer.startup(
 
         use "lewis6991/gitsigns.nvim"
         use "akinsho/nvim-bufferline.lua"
-        use "glepnir/galaxyline.nvim"
+        use 'hoob3rt/lualine.nvim'
         use "windwp/nvim-autopairs"
         use "alvan/vim-closetag"
         use "folke/trouble.nvim"
 
         -- Comment
         use "terrortylor/nvim-comment"
-
-        -- snippet support
-        use "hrsh7th/vim-vsnip"
-        use "rafamadriz/friendly-snippets"
 
         -- file managing , picker etc
         use "kyazdani42/nvim-tree.lua"

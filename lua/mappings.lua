@@ -25,7 +25,7 @@ map("v", "x", [=[ "_x ]=], opt)
 -- map("n", "<C-a>", [[ <Cmd> %y+<CR>]], opt)
 
 -- toggle numbers ---
-map("n", "<leader>ln", [[ <Cmd> set nu!<CR>]], opt)
+-- map("n", "<leader>nn", [[ <Cmd> set nu!<CR>]], opt)
 
 -- toggle truezen.nvim's ataraxis and minimalist mode
 map("n", "<leader>z", [[ <Cmd> TZAtaraxis<CR>]], opt)
@@ -48,3 +48,5 @@ map("n", "<leader>e", ":TroubleToggle<CR>",{noremap = true, silent = true})
 map("c", "<down>", 'pumvisible() ? "<c-n>": "<down>"', { noremap = true, expr = true, silent = false})
 map("c", "<up>", 'pumvisible() ? "<c-p>": "<up>"', { noremap = true, expr = true, silent = false})
 
+-- line wrap
+map("n", "<leader>w", ":set nowrap!<CR>",{noremap = true, silent = true})

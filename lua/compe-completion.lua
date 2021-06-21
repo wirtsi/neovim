@@ -15,8 +15,8 @@ require "compe".setup {
     documentation = true,
     source = {
         buffer = {kind = "﬘", true},
-        vsnip = {kind = "﬌"}, --replace to what sign you prefer
-        nvim_lsp = true
+        nvim_lsp = true,
+        path = true
     }
 }
 
@@ -42,15 +42,6 @@ _G.tab_complete = function()
         return t "<Tab>"
     else
         return vim.fn["compe#complete"]()
-    end
-end
-_G.s_tab_complete = function()
-    if vim.fn.pumvisible() == 1 then
-        return t "<C-p>"
-    elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-        return t "<Plug>(vsnip-jump-prev)"
-    else
-        return t "<S-Tab>"
     end
 end
 

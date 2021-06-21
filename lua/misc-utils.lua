@@ -35,6 +35,8 @@ opt("b", "expandtab", true)
 opt("b", "shiftwidth", 2)
 opt("b", "smartindent", true)
 
+vim.cmd("set colorcolumn=80")
+
 local M = {}
 
 function M.is_buffer_empty()

@@ -8,7 +8,8 @@ ts_config.setup {
         "bash",
         "lua",
         "json",
-        "python"
+        "python",
+        "php"
         -- "rust",
         -- "go"
     },
