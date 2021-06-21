@@ -58,4 +58,11 @@ vim.cmd([[augroup fmt
   autocmd!
   autocmd BufWritePre * undojoin | Neoformat
 augroup END]])
+
+vim.cmd([[
+  if has('nvim') && executable('nvr')
+    let $GIT_EDITOR = "nvr --remote-wait +'set bufhidden=wipe'"
+  endif
+]])
+
 return M
