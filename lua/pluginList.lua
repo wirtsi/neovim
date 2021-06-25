@@ -10,6 +10,7 @@ return packer.startup(
         -- color related stuff
         use "norcalli/nvim-colorizer.lua"
 	use 'shaunsingh/nord.nvim'
+        use 'folke/tokyonight.nvim'
 
         -- lang stuff
         use "nvim-treesitter/nvim-treesitter"
@@ -19,6 +20,7 @@ return packer.startup(
         use "sbdchd/neoformat"
         use "nvim-lua/plenary.nvim"
         use "kabouzeid/nvim-lspinstall"
+        use {"npxbr/glow.nvim", run = ":GlowInstall"}
 
         use "lewis6991/gitsigns.nvim"
         use "akinsho/nvim-bufferline.lua"

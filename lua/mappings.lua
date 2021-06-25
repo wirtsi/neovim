@@ -9,13 +9,11 @@ end
 local opt = {}
 
 -- dont copy any deleted text , this is disabled by default so uncomment the below mappings if you want them!
---[[ remove this line
 
 map("n", "dd", [=[ "_dd ]=], opt)
 map("v", "dd", [=[ "_dd ]=], opt)
 map("v", "x", [=[ "_x ]=], opt)
 
- this line too ]]
 -- OPEN TERMINALS --
 -- map("n", "<C-l>", [[<Cmd>vnew term://fish <CR>]], opt) -- term over right
 -- map("n", "<C-x>", [[<Cmd> split term://fish | resize 10 <CR>]], opt) --  term bottom
@@ -46,3 +44,6 @@ map("c", "<up>", 'pumvisible() ? "<c-p>": "<up>"', { noremap = true, expr = true
 
 -- line wrap
 map("n", "<leader>w", ":set nowrap!<CR>",{noremap = true, silent = true})
+
+-- preview markdown
+map("n", "<leader>m", ":Glow<CR>",{noremap = true, silent = true})

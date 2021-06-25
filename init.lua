@@ -1,3 +1,6 @@
+local g = vim.g
+g.mapleader = " "
+
 -- load all plugins
 require "pluginList"
 require "nvim-reload"
@@ -16,15 +19,16 @@ require "nvim-lspconfig"
 require "compe-completion"
 
 local cmd = vim.cmd
-local g = vim.g
 
-g.mapleader = " "
 g.auto_save = 0
 
 -- colorscheme related stuff
 cmd "syntax on"
 
-require('nord').set()
+-- require('nord').set()
+g.tokyonight_style = "night"
+vim.cmd[[colorscheme tokyonight]]
+
 
 
 -- blankline
@@ -37,6 +41,7 @@ g.indent_blankline_buftype_exclude = {"terminal"}
 
 g.indent_blankline_show_trailing_blankline_indent = false
 g.indent_blankline_show_first_indent_level = false
+g.wrap=1
 
 require "treesitter-nvim"
 require "mappings"
@@ -50,7 +55,7 @@ require("nvim-autopairs").setup()
 require("lspkind").init()
 
 -- hide line numbers , statusline in specific buffers!
-vim.api.nvim_exec(
+vim.cmd(
     [[
    au BufEnter term://* setlocal nonumber
    au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
@@ -58,6 +63,9 @@ vim.api.nvim_exec(
 ]],
     false
 )
+
+-- notify file change
+vim.cmd([[autocmd FocusGained * checktime]], false)
 
 require "whichkey"
 require "dashboard"
