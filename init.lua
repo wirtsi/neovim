@@ -17,6 +17,7 @@ require("multiline")
 -- lsp stuff
 require "nvim-lspconfig"
 require "compe-completion"
+require "true-zen"
 
 local cmd = vim.cmd
 
