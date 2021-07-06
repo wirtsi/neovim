@@ -47,5 +47,11 @@ map("n", "<leader>w", ":set nowrap!<CR>",{noremap = true, silent = true})
 
 -- preview markdown
 map("n", "<leader>m", ":Glow<CR>",{noremap = true, silent = true})
+
+-- Truezen.nvim
+map("n", "<leader>zz", ":TZAtaraxis<CR>", opt)
+map("n", "<leader>zm", ":TZMinimalist<CR>", opt)
+map("n", "<leader>zf", ":TZFocus<CR>", opt)
+
 -- format code
 map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], opt)
