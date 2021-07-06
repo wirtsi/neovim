@@ -47,3 +47,5 @@ map("n", "<leader>w", ":set nowrap!<CR>",{noremap = true, silent = true})
 
 -- preview markdown
 map("n", "<leader>m", ":Glow<CR>",{noremap = true, silent = true})
+-- format code
+map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], opt)
