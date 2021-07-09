@@ -26,9 +26,9 @@ g.auto_save = 0
 -- colorscheme related stuff
 cmd "syntax on"
 
--- require('nord').set()
-g.tokyonight_style = "night"
-vim.cmd[[colorscheme tokyonight]]
+require('nord').set()
+-- g.tokyonight_style = "night"
+-- vim.cmd[[colorscheme tokyonight]]
 
 
 
