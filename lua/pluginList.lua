@@ -27,7 +27,15 @@ return packer.startup(
         use 'hoob3rt/lualine.nvim'
         use "windwp/nvim-autopairs"
         use "alvan/vim-closetag"
-        use "folke/trouble.nvim"
+        use {
+          "folke/trouble.nvim",
+          requires = "kyazdani42/nvim-web-devicons",
+          config = function()
+            require("trouble").setup {
+              auto_close=true
+            }
+          end
+        }
         use 'editorconfig/editorconfig-vim'
         use 'mg979/vim-visual-multi'
 
@@ -41,6 +49,13 @@ return packer.startup(
         use "nvim-telescope/telescope-media-files.nvim"
         use "nvim-lua/popup.nvim"
         use "kdheepak/lazygit.nvim"
+        use {
+          "ahmedkhalf/project.nvim",
+          config = function()
+            require("project_nvim").setup {
+            }
+          end
+        }
 
 
         -- misc

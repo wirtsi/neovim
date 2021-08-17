@@ -7,7 +7,7 @@ end
 
 vim.api.nvim_command('packadd packer.nvim')
 
-local no_errors = pcall(function()
+local no_errors, error_msg = pcall(function()
 
   local time
   local profile_info
@@ -44,8 +44,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/florian.krause/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/florian.krause/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/florian.krause/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/florian.krause/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/florian.krause/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/Users/floriankrause/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/floriankrause/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/floriankrause/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/floriankrause/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/floriankrause/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -71,151 +71,165 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["TrueZen.nvim"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/TrueZen.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/TrueZen.nvim"
   },
   ["dashboard-nvim"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/dashboard-nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/dashboard-nvim"
   },
   ["editorconfig-vim"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/editorconfig-vim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/editorconfig-vim"
   },
   ["gitsigns.nvim"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
   },
   ["glow.nvim"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/glow.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/glow.nvim"
   },
   ["indent-blankline.nvim"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim"
   },
   ["lazygit.nvim"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/lazygit.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/lazygit.nvim"
   },
   ["lspkind-nvim"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/lualine.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
   neoformat = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/neoformat"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/neoformat"
   },
   ["neoscroll.nvim"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/neoscroll.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/neoscroll.nvim"
   },
   ["nord.nvim"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/nord.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nord.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
   },
   ["nvim-bufferline.lua"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua"
   },
   ["nvim-colorizer.lua"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
   },
   ["nvim-comment"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/nvim-comment"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-comment"
   },
   ["nvim-compe"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/nvim-compe"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
   ["nvim-lspinstall"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
   },
   ["nvim-reload"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/nvim-reload"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-reload"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
   ["popup.nvim"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/popup.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/popup.nvim"
+  },
+  ["project.nvim"] = {
+    config = { "\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17project_nvim\frequire\0" },
+    loaded = true,
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/project.nvim"
   },
   ["startuptime.vim"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/startuptime.vim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/startuptime.vim"
   },
   ["telescope-media-files.nvim"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
   ["tokyonight.nvim"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/tokyonight.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/tokyonight.nvim"
   },
   ["trouble.nvim"] = {
+    config = { "\27LJ\2\nH\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\15auto_close\2\nsetup\ftrouble\frequire\0" },
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/trouble.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/trouble.nvim"
   },
   ["vim-auto-save"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/vim-auto-save"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/vim-auto-save"
   },
   ["vim-closetag"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/vim-closetag"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/vim-closetag"
   },
   ["vim-visual-multi"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/vim-visual-multi"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/vim-visual-multi"
   },
   ["which-key.nvim"] = {
     loaded = true,
-    path = "/Users/florian.krause/.local/share/nvim/site/pack/packer/start/which-key.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/which-key.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: project.nvim
+time([[Config for project.nvim]], true)
+try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17project_nvim\frequire\0", "config", "project.nvim")
+time([[Config for project.nvim]], false)
+-- Config for: trouble.nvim
+time([[Config for trouble.nvim]], true)
+try_loadstring("\27LJ\2\nH\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\15auto_close\2\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
+time([[Config for trouble.nvim]], false)
 if should_profile then save_profiles() end
 
 end)
 
 if not no_errors then
-  vim.api.nvim_command('echohl ErrorMsg | echom "Error in packer_compiled: ".v:exception | echom "Please check your config for correctness" | echohl None')
+  vim.api.nvim_command('echohl ErrorMsg | echom "Error in packer_compiled: '..error_msg..'" | echom "Please check your config for correctness" | echohl None')
 end

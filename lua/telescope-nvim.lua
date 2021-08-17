@@ -1,5 +1,6 @@
 local actions = require('telescope.actions')
-require("telescope").setup {
+require("telescope").load_extension('projects')
+require('telescope').setup {
     defaults = {
         vimgrep_arguments = {
             "rg",
@@ -32,7 +33,6 @@ require("telescope").setup {
         file_sorter = require "telescope.sorters".get_fuzzy_file,
         file_ignore_patterns = {},
         generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
-        shorten_path = true,
         winblend = 0,
         border = {},
         borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
@@ -82,6 +82,8 @@ vim.api.nvim_set_keymap("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], opt)
 vim.api.nvim_set_keymap("n", "<Leader>fw", [[<Cmd> Telescope live_grep<CR>]], opt)
 vim.api.nvim_set_keymap("n", "<Leader>fW", [[<Cmd> Telescope grep_string<CR>]], opt)
 vim.api.nvim_set_keymap("n", "<Leader>fn", [[<Cmd> DashboardNewFile<CR>]], opt)
+vim.api.nvim_set_keymap("n", "<Leader>fp", [[<Cmd> Telescope projects<CR>]], opt)
+
 vim.api.nvim_set_keymap("n", "<Leader>bm", [[<Cmd> DashboardJumpMarks<CR>]], opt)
 vim.api.nvim_set_keymap("n", "<Leader>sl", [[<Cmd> SessionLoad<CR>]], opt)
 vim.api.nvim_set_keymap("n", "<Leader>ss", [[<Cmd> SessionSave<CR>]], opt)

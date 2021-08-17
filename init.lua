@@ -44,6 +44,10 @@ g.indent_blankline_show_trailing_blankline_indent = false
 g.indent_blankline_show_first_indent_level = false
 g.wrap=1
 
+-- project rooter
+g.nvim_tree_update_cwd = 1
+g.nvim_tree_respect_buf_cwd = 1
+
 require "treesitter-nvim"
 require "mappings"
 
