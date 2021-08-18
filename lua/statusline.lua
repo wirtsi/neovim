@@ -94,7 +94,7 @@ ins_left {
       t = colors.red
     }
     vim.api.nvim_command(
-        'hi! LualineMode guifg=' .. mode_color[vim.fn.mode()])
+        'hi! LualineMode guifg=' .. mode_color[vim.fn.mode()] .." guibg='#3C4150'")
     return ''
   end,
   color = "LualineMode",
@@ -125,7 +125,8 @@ ins_left {
 ins_left {
   'filename',
   condition = conditions.buffer_not_empty,
-  color = {fg = colors.magenta, gui = 'bold'}
+  color = {fg = colors.magenta, gui = 'bold'},
+  path=1
 }
 
 ins_left {'location'}
