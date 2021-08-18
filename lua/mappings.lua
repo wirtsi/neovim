@@ -10,9 +10,9 @@ local opt = {}
 
 -- dont copy any deleted text , this is disabled by default so uncomment the below mappings if you want them!
 
-map("n", "dd", [=[ "_dd ]=], opt)
-map("v", "dd", [=[ "_dd ]=], opt)
-map("v", "x", [=[ "_x ]=], opt)
+-- map("n", "dd", [=[ "_dd ]=], opt)
+-- map("v", "dd", [=[ "_dd ]=], opt)
+-- map("v", "x", [=[ "_x ]=], opt)
 
 -- OPEN TERMINALS --
 -- map("n", "<C-l>", [[<Cmd>vnew term://fish <CR>]], opt) -- term over right
