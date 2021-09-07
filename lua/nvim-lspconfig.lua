@@ -95,7 +95,7 @@ local util = require "lspconfig".util
 require "lspconfig".efm.setup {
   --cmd = {"efm-langserver",},
   init_options = {documentFormatting = false},
-  filetypes = {"javascript", "typescript", "typescriptreact"},
+  filetypes = {"javascript", "typescript", "typescriptreact", "vue"},
   root_dir = function(fname)
     return util.root_pattern("tsconfig.json")(fname) or
     util.root_pattern(".eslintrc.js", ".git")(fname);
@@ -103,7 +103,10 @@ require "lspconfig".efm.setup {
   settings = {
     rootMarkers = {".eslintrc.js", ".git/"},
     languages = {
-      typescript = {eslint}
+      typescript = {eslint},
+      javascript = {eslint},
+      typescriptreact = {eslint},
+      vue = {eslint}
     }
   }
 }
