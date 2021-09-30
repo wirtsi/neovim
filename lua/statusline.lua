@@ -31,7 +31,7 @@ local config = {
     -- Disable sections and component separators
     component_separators = "",
     section_separators = "",
-    theme = "nord"
+    theme = "github"
   },
   sections = {
     -- these are to remove the defaults
@@ -125,21 +125,21 @@ ins_left {
 ins_left {
   'filename',
   condition = conditions.buffer_not_empty,
-  color = {fg = colors.magenta, gui = 'bold'},
+  -- color = {fg = colors.magenta, gui = 'bold'},
   path=1
 }
 
 ins_left {'location'}
 
-ins_left {'progress', color = {fg = colors.fg, gui = 'bold'}}
+ins_left {'progress', gui = 'bold'}
 
 ins_left {
   'diagnostics',
   sources = {'nvim_lsp'},
   symbols = {error = ' ', warn = ' ', info = ' '},
-  color_error = colors.red,
-  color_warn = colors.yellow,
-  color_info = colors.cyan
+  -- color_error = colors.red,
+  -- color_warn = colors.yellow,
+  -- color_info = colors.cyan
 }
 
 -- Insert mid section. You can make any number of sections in neovim :)
@@ -170,30 +170,30 @@ ins_right {
   'o:encoding', -- option component same as &encoding in viml
   upper = true, -- I'm not sure why it's upper case either ;)
   condition = conditions.hide_in_width,
-  color = {fg = colors.green, gui = 'bold'}
+  -- color = {fg = colors.green, gui = 'bold'}
 }
 
 ins_right {
   'fileformat',
   upper = true,
   icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-  color = {fg = colors.green, gui = 'bold'}
+  -- color = {fg = colors.green, gui = 'bold'}
 }
 
 ins_right {
   'branch',
   icon = '',
   condition = conditions.check_git_workspace,
-  color = {fg = colors.violet, gui = 'bold'}
+  -- color = {fg = colors.violet, gui = 'bold'}
 }
 
 ins_right {
   'diff',
   -- Is it me or the symbol for modified us really weird
   symbols = {added = ' ', modified = '柳 ', removed = ' '},
-  color_added = colors.green,
-  color_modified = colors.orange,
-  color_removed = colors.red,
+  -- color_added = colors.green,
+  -- color_modified = colors.orange,
+  -- color_removed = colors.red,
   condition = conditions.hide_in_width
 }
 
