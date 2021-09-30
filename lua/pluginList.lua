@@ -8,9 +8,10 @@ return packer.startup(
         use 'famiu/nvim-reload'
 
         -- color related stuff
+	-- use 'shaunsingh/nord.nvim'
+	-- use 'folke/tokyonight.nvim'
+        use "projekt0n/github-nvim-theme"
         use "norcalli/nvim-colorizer.lua"
-	use 'shaunsingh/nord.nvim'
-        use 'folke/tokyonight.nvim'
 
         -- lang stuff
         use "nvim-treesitter/nvim-treesitter"
@@ -43,7 +44,10 @@ return packer.startup(
         use "terrortylor/nvim-comment"
 
         -- file managing , picker etc
-        use "kyazdani42/nvim-tree.lua"
+        use {
+            'kyazdani42/nvim-tree.lua',
+            requires = 'kyazdani42/nvim-web-devicons',
+        }
         use "kyazdani42/nvim-web-devicons"
         use "nvim-telescope/telescope.nvim"
         use "nvim-telescope/telescope-media-files.nvim"

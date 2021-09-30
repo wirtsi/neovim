@@ -1,12 +1,21 @@
 local g = vim.g
 g.mapleader = " "
+local cmd = vim.cmd
+g.auto_save = 0
+cmd "syntax on"
+
 
 -- load all plugins
 require "pluginList"
+require("github-theme").setup({
+  theme_style = "dark",
+  -- other config
+})
 require "nvim-reload"
 require "misc-utils"
 
 require "top-bufferline"
+
 require "statusline"
 
 require("colorizer").setup()
@@ -19,14 +28,10 @@ require "nvim-lspconfig"
 require "compe-completion"
 require "true-zen"
 
-local cmd = vim.cmd
-
-g.auto_save = 0
 
 -- colorscheme related stuff
-cmd "syntax on"
 
-require('nord').set()
+-- require('nord').set()
 -- g.tokyonight_style = "night"
 -- vim.cmd[[colorscheme tokyonight]]
 
@@ -47,7 +52,6 @@ g.wrap=1
 -- project rooter
 g.nvim_tree_update_cwd = 1
 g.nvim_tree_respect_buf_cwd = 1
-
 require "treesitter-nvim"
 require "mappings"
 
