@@ -70,6 +70,19 @@ return packer.startup(
         use "Pocco81/TrueZen.nvim"
         use "folke/which-key.nvim"
         use "lukas-reineke/indent-blankline.nvim"
+        use {
+          'voldikss/vim-floaterm',
+          opt = true,
+          cmd = { 'FloatermToggle', 'FloatermNew', 'FloatermSend' },
+          config = function()
+            local g = vim.g
+
+            g.floaterm_width = 0.8
+            g.floaterm_height = 0.8
+            g.floaterm_title = '|👾 ($1/$2)|'
+            g.floaterm_opener = 'vsplit'
+          end,
+        }
     end,
     {
         display = {

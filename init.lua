@@ -2,6 +2,11 @@ local g = vim.g
 g.mapleader = " "
 local cmd = vim.cmd
 g.auto_save = 0
+
+g.floaterm_width = 0.8
+g.floaterm_height = 0.8
+g.floaterm_title = '|👾 ($1/$2)|'
+
 cmd "syntax on"
 
 
@@ -29,14 +34,6 @@ require "compe-completion"
 require "true-zen"
 
 
--- colorscheme related stuff
-
--- require('nord').set()
--- g.tokyonight_style = "night"
--- vim.cmd[[colorscheme tokyonight]]
-
-
-
 -- blankline
 
 g.indentLine_enabled = 1
@@ -50,8 +47,6 @@ g.indent_blankline_show_first_indent_level = false
 g.wrap=1
 
 -- project rooter
-g.nvim_tree_update_cwd = 1
-g.nvim_tree_respect_buf_cwd = 1
 require "treesitter-nvim"
 require "mappings"
 

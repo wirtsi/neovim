@@ -1,24 +1,16 @@
 local g = vim.g
 
-g.nvim_tree_update_cwd = 1
-g.nvim_tree_respect_buf_cwd = 1
-
 vim.o.termguicolors = true
 
 g.nvim_tree_side = "left"
 g.nvim_tree_width = 25
 g.nvim_tree_ignore = {".git", "node_modules", ".cache"}
-g.nvim_tree_auto_open = 0
-g.nvim_tree_auto_close = 0
 g.nvim_tree_quit_on_open = 0
-g.nvim_tree_follow = 1
 g.nvim_tree_indent_markers = 1
-g.nvim_tree_hide_dotfiles = 1
+g.nvim_tree_hide_dotfiles = 0
 g.nvim_tree_git_hl = 1
 g.nvim_tree_root_folder_modifier = ":t"
-g.nvim_tree_tab_open = 0
 g.nvim_tree_allow_resize = 1
-g.nvim_tree_auto_close = 1
 
 g.nvim_tree_show_icons = {
     git = 1,
@@ -64,13 +56,11 @@ require'nvim-tree'.setup {
   -- hijack the cursor in the tree to put it at the start of the filename
   hijack_cursor       = false,
   -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually) 
-  update_cwd          = false,
-  -- show lsp diagnostics in the signcolumn
-  lsp_diagnostics     = false,
+  update_cwd          = true,
   -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
   update_focused_file = {
     -- enables the feature
-    enable      = false,
+    enable      = true,
     -- update the root directory of the tree to the one of the folder containing the file if the file is not under the current root directory
     -- only relevant when `update_focused_file.enable` is true
     update_cwd  = false,
@@ -88,11 +78,11 @@ require'nvim-tree'.setup {
 
   view = {
     -- width of the window, can be either a number (columns) or a string in `%`
-    width = 30,
+    width = 20,
     -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
     side = 'left',
     -- if true the tree will resize itself after opening a file
-    auto_resize = false,
+    auto_resize = true,
     mappings = {
       -- custom only false will merge the list with the default mappings
       -- if true, it will only use your list to set the mappings
