@@ -4,10 +4,9 @@ vim.o.termguicolors = true
 
 g.nvim_tree_side = "left"
 g.nvim_tree_width = 25
-g.nvim_tree_ignore = {".git", "node_modules", ".cache"}
+-- g.nvim_tree_ignore = {".git", "node_modules", ".cache"}
 g.nvim_tree_quit_on_open = 0
 g.nvim_tree_indent_markers = 1
-g.nvim_tree_hide_dotfiles = 0
 g.nvim_tree_git_hl = 1
 g.nvim_tree_root_folder_modifier = ":t"
 g.nvim_tree_allow_resize = 1
@@ -58,6 +57,9 @@ require'nvim-tree'.setup {
   -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually) 
   update_cwd          = true,
   -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
+  hide_dotfiles       = false,
+  tree_ignore         = {".git", "node_modules", ".cache"},
+
   update_focused_file = {
     -- enables the feature
     enable      = true,

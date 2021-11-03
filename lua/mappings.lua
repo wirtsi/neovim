@@ -19,7 +19,7 @@ map("n", "<C-l>", [[<Cmd>vnew term://fish <CR>]], opt) -- term over right
 map("n", "<C-x>", [[<Cmd> split term://fish | resize 10 <CR>]], opt) --  term bottom
 map("n", "<C-t>t", [[<Cmd> tabnew | term <CR>]], opt) -- term newtab
 map("t", "<esc>", [[<C-\><C-n>]], opt)
-map("t", "<Leader>t", [[<Cmd> FloatermToggle<CR>]], opt)
+map("t", "<Leader>tt", [[<Cmd> FloatermToggle<CR>]], opt)
 
 -- COPY EVERYTHING --
 -- map("n", "<C-a>", [[ <Cmd> %y+<CR>]], opt)
@@ -59,4 +59,4 @@ map("n", "<leader>zf", ":TZFocus<CR>", opt)
 map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], opt)
 
 -- floating terminal
-map("n", "<Leader>t", [[<Cmd> FloatermToggle<CR>]], opt)
+map("n", "<Leader>tt", [[<Cmd> FloatermToggle<CR>]], opt)

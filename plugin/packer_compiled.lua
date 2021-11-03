@@ -71,152 +71,189 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["TrueZen.nvim"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/TrueZen.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/TrueZen.nvim",
+    url = "https://github.com/Pocco81/TrueZen.nvim"
   },
   ["dashboard-nvim"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/dashboard-nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/dashboard-nvim",
+    url = "https://github.com/glepnir/dashboard-nvim"
   },
   ["editorconfig-vim"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/editorconfig-vim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/editorconfig-vim",
+    url = "https://github.com/editorconfig/editorconfig-vim"
   },
   ["github-nvim-theme"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/github-nvim-theme"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/github-nvim-theme",
+    url = "https://github.com/projekt0n/github-nvim-theme"
   },
   ["gitsigns.nvim"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   ["glow.nvim"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/glow.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/glow.nvim",
+    url = "https://github.com/npxbr/glow.nvim"
   },
   ["indent-blankline.nvim"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
   ["lazygit.nvim"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/lazygit.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
+    url = "https://github.com/kdheepak/lazygit.nvim"
   },
   ["lspkind-nvim"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
+    url = "https://github.com/onsails/lspkind-nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/lualine.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/hoob3rt/lualine.nvim"
   },
   neoformat = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/neoformat"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/neoformat",
+    url = "https://github.com/sbdchd/neoformat"
   },
   ["neoscroll.nvim"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/neoscroll.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/neoscroll.nvim",
+    url = "https://github.com/karb94/neoscroll.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-bufferline.lua"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua",
+    url = "https://github.com/akinsho/nvim-bufferline.lua"
   },
   ["nvim-colorizer.lua"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
+    url = "https://github.com/norcalli/nvim-colorizer.lua"
   },
   ["nvim-comment"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-comment"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-comment",
+    url = "https://github.com/terrortylor/nvim-comment"
   },
   ["nvim-compe"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-compe"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-compe",
+    url = "https://github.com/hrsh7th/nvim-compe"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-lspinstall"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-lspinstall",
+    url = "https://github.com/kabouzeid/nvim-lspinstall"
   },
   ["nvim-reload"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-reload"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-reload",
+    url = "https://github.com/famiu/nvim-reload"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["popup.nvim"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/popup.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/popup.nvim",
+    url = "https://github.com/nvim-lua/popup.nvim"
   },
   ["project.nvim"] = {
-    config = { "\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17project_nvim\frequire\0" },
+    config = { "\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0" },
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/project.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/project.nvim",
+    url = "https://github.com/ahmedkhalf/project.nvim"
   },
   ["startuptime.vim"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/startuptime.vim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/startuptime.vim",
+    url = "https://github.com/tweekmonster/startuptime.vim"
   },
   ["telescope-media-files.nvim"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim",
+    url = "https://github.com/nvim-telescope/telescope-media-files.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   ["trouble.nvim"] = {
     config = { "\27LJ\2\nH\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\15auto_close\2\nsetup\ftrouble\frequire\0" },
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/trouble.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/trouble.nvim",
+    url = "https://github.com/folke/trouble.nvim"
   },
   ["vim-auto-save"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/vim-auto-save"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/vim-auto-save",
+    url = "https://github.com/907th/vim-auto-save"
   },
   ["vim-closetag"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/vim-closetag"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/vim-closetag",
+    url = "https://github.com/alvan/vim-closetag"
   },
   ["vim-floaterm"] = {
     commands = { "FloatermToggle", "FloatermNew", "FloatermSend" },
-    config = { "\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0" },
+    config = { "\27LJ\2\n—\1\0\0\2\0\b\1\v6\0\0\0009\0\1\0*\1\0\0=\1\2\0*\1\0\0=\1\3\0'\1\5\0=\1\4\0'\1\a\0=\1\6\0K\0\1\0\vvsplit\20floaterm_opener\19|ðŸ‘¾ ($1/$2)|\19floaterm_title\20floaterm_height\19floaterm_width\6g\bvimµæÌ™\19™³¦ÿ\3\0" },
     loaded = false,
     needs_bufread = false,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/opt/vim-floaterm"
+    only_cond = false,
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/opt/vim-floaterm",
+    url = "https://github.com/voldikss/vim-floaterm"
   },
   ["vim-visual-multi"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/vim-visual-multi"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/vim-visual-multi",
+    url = "https://github.com/mg979/vim-visual-multi"
   },
   ["which-key.nvim"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/which-key.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    url = "https://github.com/folke/which-key.nvim"
   }
 }
 
@@ -227,14 +264,14 @@ try_loadstring("\27LJ\2\nH\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B
 time([[Config for trouble.nvim]], false)
 -- Config for: project.nvim
 time([[Config for project.nvim]], true)
-try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17project_nvim\frequire\0", "config", "project.nvim")
+try_loadstring("\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0", "config", "project.nvim")
 time([[Config for project.nvim]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file FloatermSend lua require("packer.load")({'vim-floaterm'}, { cmd = "FloatermSend", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file FloatermToggle lua require("packer.load")({'vim-floaterm'}, { cmd = "FloatermToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file FloatermNew lua require("packer.load")({'vim-floaterm'}, { cmd = "FloatermNew", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file FloatermSend lua require("packer.load")({'vim-floaterm'}, { cmd = "FloatermSend", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 if should_profile then save_profiles() end
