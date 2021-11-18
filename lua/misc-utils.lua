@@ -54,10 +54,10 @@ vim.cmd([[autocmd Filetype yaml setlocal expandtab tabstop=2 shiftwidth=2 softta
 vim.cmd([[autocmd Filetype tf setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2]])
 
 -- format on save
--- vim.cmd([[augroup fmt
---   autocmd!
---   autocmd BufWritePre * undojoin | Neoformat
--- augroup END]])
+vim.cmd([[augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat | lua require'sort-import'.sort_import()
+augroup END]])
 
 -- use vim for commit messages
 vim.cmd([[
