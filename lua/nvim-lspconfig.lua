@@ -1,38 +1,65 @@
-function on_attach(client, bufnr)
-    local function buf_set_keymap(...)
-        vim.api.nvim_buf_set_keymap(bufnr, ...)
+
+    -- Mappings.
+
+local function map(mode, lhs, rhs, opts)
+    local options = {noremap = true}
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
     end
+    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
+
+local function on_attach(client, bufnr)
+
+    local opts = {noremap = true, silent = true}
+
     local function buf_set_option(...)
         vim.api.nvim_buf_set_option(bufnr, ...)
     end
-
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    -- Mappings.
-    local opts = {noremap = true, silent = true}
-
-    buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-    buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-    buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', 'gE', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-    buf_set_keymap('n', 'ge', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-    buf_set_keymap('n', '<space>E', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+    map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+    map('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts)
+    map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    -- map('n', 'gI', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+    map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+    map('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+    map('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+    map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+    map('n', '<space>D', '<cmd>Telescope lsp_type_definitions<CR><CR>', opts)
+    map('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+    map('n', '<space>ca', '<cmd>Telescope lsp_code_actions<CR>', opts)
+    map('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
+    map('n', 'gE', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+    map('n', 'ge', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+    map('n', '<space>e', '<cmd>Telescope lsp_document_diagnostics<CR>', opts)
+    map('n', '<space>E', '<cmd>Telescope lsp_workspace_diagnostics<CR>', opts)
 
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
-        buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+        map("n", "<space>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
     elseif client.resolved_capabilities.document_range_formatting then
-        buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+        map("n", "<space>fm", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
+end
+
+
+local function typescript_attach(client)
+    local opts = {noremap = true, silent = true}
+    local ts_utils = require("nvim-lsp-ts-utils")
+    ts_utils.setup({
+        eslint_bin = "eslint_d",
+        eslint_enable_diagnostics = true,
+        eslint_enable_code_actions = true,
+        enable_formatting = true,
+        formatter = "prettier",
+    })
+    ts_utils.setup_client(client)
+    map("n", "gs", ":TSLspOrganize<CR>", opts)
+    map("n", "gi", ":TSLspRenameFile<CR>", opts)
+    map("n", "go", ":TSLspImportAll<CR>", opts)
+
 end
 
 -- lspInstall + lspconfig stuff
@@ -40,38 +67,41 @@ end
 local function setup_servers()
     require "lspinstall".setup()
 
+    require("null-ls").config({})
+
     local lspconf = require("lspconfig")
     local servers = require "lspinstall".installed_servers()
 
+    lspconf["null-ls"].setup({ on_attach = on_attach })
+
     for _, lang in pairs(servers) do
-        if lang ~= "lua" then
+        if lang == "typescript" then
             lspconf[lang].setup {
-                on_attach = on_attach,
-                root_dir = vim.loop.cwd
-            }
-        elseif lang == "lua" then
-            lspconf[lang].setup {
-                root_dir = function()
-                    return vim.loop.cwd()
-                end,
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = {"vim"}
-                        },
-                        workspace = {
-                            library = {
-                                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                                [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
-                            }
-                        },
-                        telemetry = {
-                            enable = false
-                        }
-                    }
-                }
+                on_attach = typescript_attach,
             }
         end
+          lspconf[lang].setup {
+              root_dir = function()
+                  return vim.loop.cwd()
+              end,
+              on_attach = on_attach,
+              settings = {
+                  Lua = {
+                      diagnostics = {
+                          globals = {"vim"}
+                      },
+                      workspace = {
+                          library = {
+                              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                              [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
+                          }
+                      },
+                      telemetry = {
+                          enable = false
+                      }
+                  }
+              }
+          }
     end
 end
 
@@ -82,34 +112,6 @@ require "lspinstall".post_install_hook = function()
     setup_servers() -- reload installed servers
     vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
 end
-
--- eslint 
-local eslint = {
-  lintCommand = "./node_modules/.bin/eslint -f unix --stdin --stdin-filename ${INPUT}",
-  lintIgnoreExitCode = true,
-  lintStdin = true
-}
-
-local util = require "lspconfig".util
-
-require "lspconfig".efm.setup {
-  --cmd = {"efm-langserver",},
-  init_options = {documentFormatting = false},
-  filetypes = {"javascript", "typescript", "typescriptreact", "vue"},
-  root_dir = function(fname)
-    return util.root_pattern("tsconfig.json")(fname) or
-    util.root_pattern(".eslintrc.js", ".git")(fname);
-  end,
-  settings = {
-    rootMarkers = {".eslintrc.js", ".git/"},
-    languages = {
-      typescript = {eslint},
-      javascript = {eslint},
-      typescriptreact = {eslint},
-      vue = {eslint}
-    }
-  }
-}
 
 -- replace the default lsp diagnostic letters with prettier symbols
 vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnosticsDefaultError"})

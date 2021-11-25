@@ -1,4 +1,4 @@
- local function map(mode, lhs, rhs, opts)
+local function map(mode, lhs, rhs, opts)
     local options = {noremap = true}
     if opts then
         options = vim.tbl_extend("force", options, opts)
@@ -38,7 +38,7 @@ map("v", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
 map("n", "<leader>lg", ":LazyGit<CR>",{noremap = true, silent = true})
 
 -- Show Errors
-map("n", "<leader>e", ":TroubleToggle<CR>",{noremap = true, silent = true})
+-- map("n", "<leader>e", ":TroubleToggle<CR>",{noremap = true, silent = true})
 
 -- Use cursor to select
 map("c", "<down>", 'pumvisible() ? "<c-n>": "<down>"', { noremap = true, expr = true, silent = false})
@@ -54,9 +54,6 @@ map("n", "<leader>m", ":Glow<CR>",{noremap = true, silent = true})
 map("n", "<leader>zz", ":TZAtaraxis<CR>", opt)
 map("n", "<leader>zm", ":TZMinimalist<CR>", opt)
 map("n", "<leader>zf", ":TZFocus<CR>", opt)
-
--- format code
-map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], opt)
 
 -- floating terminal
 map("n", "<Leader>tt", [[<Cmd> FloatermToggle<CR>]], opt)

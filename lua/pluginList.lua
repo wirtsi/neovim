@@ -18,9 +18,10 @@ return packer.startup(
         use "neovim/nvim-lspconfig"
         use "hrsh7th/nvim-compe"
         use "onsails/lspkind-nvim"
-        use "sbdchd/neoformat"
         use "nvim-lua/plenary.nvim"
         use "kabouzeid/nvim-lspinstall"
+        use "jose-elias-alvarez/null-ls.nvim"
+        use "jose-elias-alvarez/nvim-lsp-ts-utils"
         use {"npxbr/glow.nvim", run = ":GlowInstall"}
 
         use "lewis6991/gitsigns.nvim"
@@ -28,15 +29,6 @@ return packer.startup(
         use 'hoob3rt/lualine.nvim'
         use "windwp/nvim-autopairs"
         use "alvan/vim-closetag"
-        use {
-          "folke/trouble.nvim",
-          requires = "kyazdani42/nvim-web-devicons",
-          config = function()
-            require("trouble").setup {
-              auto_close=true
-            }
-          end
-        }
         use 'editorconfig/editorconfig-vim'
         use 'mg979/vim-visual-multi'
 
@@ -53,16 +45,6 @@ return packer.startup(
         use "nvim-telescope/telescope-media-files.nvim"
         use "nvim-lua/popup.nvim"
         use "kdheepak/lazygit.nvim"
-        use {
-          "ahmedkhalf/project.nvim",
-          config = function()
-          end
-        }
-        use {
-          'jamestthompson3/sort-import.nvim', 
-          config = function() require'sort-import'.setup() end
-        }
-
 
         -- misc
         use "glepnir/dashboard-nvim"
