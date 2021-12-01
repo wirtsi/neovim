@@ -44,8 +44,13 @@ return packer.startup(
         use "nvim-telescope/telescope.nvim"
         use "nvim-telescope/telescope-media-files.nvim"
         use "nvim-lua/popup.nvim"
-        use "kdheepak/lazygit.nvim"
-
+        use {
+          "kdheepak/lazygit.nvim",
+          config = function()
+            local g = vim.g
+            g.lazygit_floating_window_use_plenary = true
+          end,
+        }
         -- misc
         use "glepnir/dashboard-nvim"
         use "tweekmonster/startuptime.vim"
