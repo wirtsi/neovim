@@ -19,7 +19,7 @@ return packer.startup(
         use "hrsh7th/nvim-compe"
         use "onsails/lspkind-nvim"
         use "nvim-lua/plenary.nvim"
-        use "kabouzeid/nvim-lspinstall"
+        use 'williamboman/nvim-lsp-installer'
         use "jose-elias-alvarez/null-ls.nvim"
         use "jose-elias-alvarez/nvim-lsp-ts-utils"
         use {"npxbr/glow.nvim", run = ":GlowInstall"}
