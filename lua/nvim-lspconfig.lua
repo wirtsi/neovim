@@ -12,15 +12,16 @@ end
 -- You will likely want to reduce updatetime which affects CursorHold
 -- note: this setting is global and should be set only once
 vim.o.updatetime = 250
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {source="always"})]]
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {source="always", focusable=false})]]
 
 vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#1f2335]]
 vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
+vim.cmd [[autocmd ColorScheme * highlight Normal:Floating guifg=white guibg=#1f2335]]
 
 -- LSP settings (for overriding per client)
 local handlers =  {
-  ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover),
-  ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help),
+  -- ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover),
+  -- ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help),
   ['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = true,
     signs = true,
@@ -70,15 +71,15 @@ local function on_attach(client, bufnr)
         map("n", "<space>fm", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
 
-    if client.name == "typescript" then
+    if client.name == "tsserver" then
       client.resolved_capabilities.document_formatting = false
       client.resolved_capabilities.document_range_formatting = false
       local ts_utils = require("nvim-lsp-ts-utils")
       ts_utils.setup({
           update_imports_on_move = true,
           require_confirmation_on_move = true,
-          auto_inlay_hints = true,
-          inlay_hints_highlight = "Comment",
+          -- auto_inlay_hints = true,
+          -- inlay_hints_highlight = "Comment",
           eslint_bin = "eslint_d",
           eslint_enable_diagnostics = true,
           eslint_enable_code_actions = true,
@@ -88,7 +89,7 @@ local function on_attach(client, bufnr)
       ts_utils.setup_client(client)
       map("n", "gs", ":TSLspOrganize<CR>", opts)
       map("n", "<space>rn", ":TSLspRenameFile<CR>", opts)
-      map("n", "go", ":TSLspImportAll<CR>", opts)
+      map("n", "go", ":TSLspImportCurrent<CR>", opts)
     end
 end
 
@@ -113,7 +114,7 @@ local function setup_servers()
   lspconf["null-ls"].setup({ on_attach = on_attach })
 
   lsp_installer.on_server_ready(function(server)
-      lspconf[server.name].setup {
+      server:setup({
           root_dir = function()
               return vim.loop.cwd()
           end,
@@ -136,7 +137,7 @@ local function setup_servers()
                   }
               }
           }
-    }
+    })
   end)
 end
 

@@ -3,7 +3,7 @@ g.mapleader = " "
 local cmd = vim.cmd
 g.auto_save = 0
 g.wrap=1
-
+g.pumblend = 0
 cmd "syntax on"
 
 

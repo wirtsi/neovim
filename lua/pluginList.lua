@@ -48,7 +48,8 @@ return packer.startup(
           "kdheepak/lazygit.nvim",
           config = function()
             local g = vim.g
-            g.lazygit_floating_window_use_plenary = true
+            g.lazygit_floating_window_use_plenary = false
+            g.lazygit_floating_window_winblend = 0
           end,
         }
         -- misc

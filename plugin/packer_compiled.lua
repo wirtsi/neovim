@@ -57,7 +57,7 @@ end
 time([[Luarocks path setup]], false)
 time([[try_loadstring definition]], true)
 local function try_loadstring(s, component, name)
-  local success, result = pcall(loadstring(s))
+  local success, result = pcall(loadstring(s), name, _G.packer_plugins[name])
   if not success then
     vim.schedule(function()
       vim.api.nvim_notify('packer.nvim: Error running ' .. component .. ' for ' .. name .. ': ' .. result, vim.log.levels.ERROR, {})
@@ -105,7 +105,7 @@ _G.packer_plugins = {
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
   ["lazygit.nvim"] = {
-    config = { "\27LJ\2\nE\0\0\2\0\3\0\0056\0\0\0009\0\1\0+\1\2\0=\1\2\0K\0\1\0(lazygit_floating_window_use_plenary\6g\bvim\0" },
+    config = { "\27LJ\2\nn\0\0\2\0\4\0\a6\0\0\0009\0\1\0+\1\1\0=\1\2\0)\1\0\0=\1\3\0K\0\1\0%lazygit_floating_window_winblend(lazygit_floating_window_use_plenary\6g\bvim\0" },
     loaded = true,
     path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
     url = "https://github.com/kdheepak/lazygit.nvim"
@@ -254,7 +254,7 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Config for: lazygit.nvim
 time([[Config for lazygit.nvim]], true)
-try_loadstring("\27LJ\2\nE\0\0\2\0\3\0\0056\0\0\0009\0\1\0+\1\2\0=\1\2\0K\0\1\0(lazygit_floating_window_use_plenary\6g\bvim\0", "config", "lazygit.nvim")
+try_loadstring("\27LJ\2\nn\0\0\2\0\4\0\a6\0\0\0009\0\1\0+\1\1\0=\1\2\0)\1\0\0=\1\3\0K\0\1\0%lazygit_floating_window_winblend(lazygit_floating_window_use_plenary\6g\bvim\0", "config", "lazygit.nvim")
 time([[Config for lazygit.nvim]], false)
 
 -- Command lazy-loads
