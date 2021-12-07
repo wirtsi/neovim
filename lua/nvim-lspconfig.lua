@@ -12,7 +12,7 @@ end
 -- You will likely want to reduce updatetime which affects CursorHold
 -- note: this setting is global and should be set only once
 vim.o.updatetime = 250
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {source="always", focusable=false})]]
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {border="single", source="always", focusable=false})]]
 
 vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#1f2335]]
 vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
@@ -78,13 +78,13 @@ local function on_attach(client, bufnr)
       ts_utils.setup({
           update_imports_on_move = true,
           require_confirmation_on_move = true,
-          -- auto_inlay_hints = true,
-          -- inlay_hints_highlight = "Comment",
-          eslint_bin = "eslint_d",
+          auto_inlay_hints = true,
+          inlay_hints_highlight = "Comment",
+          -- eslint_bin = "eslint_d",
           eslint_enable_diagnostics = true,
           eslint_enable_code_actions = true,
           enable_formatting = true,
-          formatter = "eslint_d",
+          -- formatter = "eslint_d",
       })
       ts_utils.setup_client(client)
       map("n", "gs", ":TSLspOrganize<CR>", opts)
@@ -102,7 +102,7 @@ local function setup_servers()
 
     local null_ls = require("null-ls")
     null_ls.config({
-      debug = true,
+      debug = false,
       sources = {
         null_ls.builtins.diagnostics.eslint_d, -- eslint or eslint_d
         null_ls.builtins.code_actions.eslint_d, -- eslint or eslint_d
@@ -120,7 +120,7 @@ local function setup_servers()
           end,
           handlers = handlers,
           on_attach = on_attach,
-          init_options = server.name == "typescript" and require("nvim-lsp-ts-utils").init_options,
+          init_options = server.name == "tsserver" and require("nvim-lsp-ts-utils").init_options,
           settings = {
               Lua = {
                   diagnostics = {
