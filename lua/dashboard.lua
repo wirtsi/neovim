@@ -31,7 +31,6 @@ g.dashboard_custom_section = {
   d = {description = {"洛 New File                  SPC f n"}, command = "DashboardNewFile"},
   e = {description = {"  Bookmarks                 SPC b m"}, command = "Telescope marks"},
   f = {description = {"  Load Last Session         SPC s l"}, command = "SessionLoad"},
-  g = {description = {"✰  Show projects             SPC f p"}, command = "Telescope projects"}
 }
 
 g.dashboard_custom_footer = {

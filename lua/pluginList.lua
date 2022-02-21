@@ -31,6 +31,7 @@ return packer.startup(
         use "alvan/vim-closetag"
         use 'editorconfig/editorconfig-vim'
         use 'mg979/vim-visual-multi'
+        use 'edgedb/edgedb-vim'
 
         -- Comment
         use "terrortylor/nvim-comment"

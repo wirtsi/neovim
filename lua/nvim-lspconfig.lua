@@ -61,8 +61,8 @@ local function on_attach(client, bufnr)
     map('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
     map('n', 'gE', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
     map('n', 'ge', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-    map('n', '<space>e', '<cmd>lua require\'telescope.builtin\'.lsp_document_diagnostics({previewer = false})<CR>', opts)
-    map('n', '<space>E', '<cmd>lua require\'telescope.builtin\'.lsp_workspace_diagnostics({previewer = false})<CR>', opts)
+    map('n', '<space>e', '<cmd>lua require\'telescope.builtin\'.diagnostics({bufnr =  0, previewer = false})<CR>', opts)
+    map('n', '<space>E', '<cmd>lua require\'telescope.builtin\'.diagnostics({previewer = false})<CR>', opts)
 
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
@@ -99,10 +99,11 @@ end
 
 local function setup_servers()
   local lsp_installer = require("nvim-lsp-installer")
-
+-- 
     local null_ls = require("null-ls")
-    null_ls.config({
-      debug = false,
+    null_ls.setup({
+      debug = true,
+      on_attach = on_attach,
       sources = {
         null_ls.builtins.diagnostics.eslint_d, -- eslint or eslint_d
         null_ls.builtins.code_actions.eslint_d, -- eslint or eslint_d
@@ -111,7 +112,7 @@ local function setup_servers()
     })
 
   local lspconf = require("lspconfig")
-  lspconf["null-ls"].setup({ on_attach = on_attach })
+  -- lspconf["null-ls"].setup({ on_attach = on_attach })
 
   lsp_installer.on_server_ready(function(server)
       server:setup({
