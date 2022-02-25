@@ -57,3 +57,6 @@ map("n", "<leader>zf", ":TZFocus<CR>", opt)
 
 -- floating terminal
 map("n", "<Leader>tt", [[<Cmd> FloatermToggle<CR>]], opt)
+map("n", "<Leader>tT", [[<Cmd> FloatermNew<CR>]], opt)
+map("t", "<TAB>", [[<Cmd>FloatermNext<CR>]], opt)
+map("t", "<S-TAB>", [[<Cmd>FloatermPrev<CR>]], opt)
