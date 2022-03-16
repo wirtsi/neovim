@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/dashboard-nvim",
     url = "https://github.com/glepnir/dashboard-nvim"
   },
+  ["edgedb-vim"] = {
+    loaded = true,
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/edgedb-vim",
+    url = "https://github.com/edgedb/edgedb-vim"
+  },
   ["editorconfig-vim"] = {
     loaded = true,
     path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/editorconfig-vim",
@@ -124,6 +129,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/neoscroll.nvim",
     url = "https://github.com/karb94/neoscroll.nvim"
+  },
+  ["nord.nvim"] = {
+    loaded = true,
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/nord.nvim",
+    url = "https://github.com/shaunsingh/nord.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -269,5 +279,6 @@ if should_profile then save_profiles() end
 end)
 
 if not no_errors then
+  error_msg = error_msg:gsub('"', '\\"')
   vim.api.nvim_command('echohl ErrorMsg | echom "Error in packer_compiled: '..error_msg..'" | echom "Please check your config for correctness" | echohl None')
 end

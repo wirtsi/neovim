@@ -8,8 +8,8 @@ return packer.startup(
         use 'famiu/nvim-reload'
 
         -- color related stuff
-	-- use 'shaunsingh/nord.nvim'
-	-- use 'folke/tokyonight.nvim'
+	use 'shaunsingh/nord.nvim'
+	use 'folke/tokyonight.nvim'
         use "projekt0n/github-nvim-theme"
         use "norcalli/nvim-colorizer.lua"
 

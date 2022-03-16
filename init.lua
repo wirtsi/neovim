@@ -9,10 +9,12 @@ cmd "syntax on"
 
 -- load all plugins
 require "pluginList"
-require("github-theme").setup({
-  theme_style = "dark",
-  -- other config
-})
+cmd[[colorscheme tokyonight]]
+
+-- require("github-theme").setup({
+--   theme_style = "dark",
+--   -- other config
+-- })
 require "nvim-reload"
 require "misc-utils"
 
