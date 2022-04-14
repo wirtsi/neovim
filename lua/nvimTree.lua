@@ -4,9 +4,7 @@ vim.o.termguicolors = true
 
 g.nvim_tree_side = "left"
 g.nvim_tree_width = 25
--- g.nvim_tree_ignore = {".git", "node_modules", ".cache"}
--- g.nvim_tree_quit_on_open = 0
-g.nvim_tree_indent_markers = 1
+-- g.nvim_tree_indent_markers = 1
 g.nvim_tree_git_hl = 1
 g.nvim_tree_root_folder_modifier = ":t"
 g.nvim_tree_allow_resize = 1
@@ -21,6 +19,9 @@ g.actions = {
   open_file = {
     quit_on_open = 0
   }
+}
+g.renderer = {
+  indent_markers = 1
 }
 
 g.nvim_tree_icons = {
@@ -86,7 +87,7 @@ require'nvim-tree'.setup {
 
   view = {
     -- width of the window, can be either a number (columns) or a string in `%`
-    width = 20,
+    width = "20%",
     -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
     side = 'left',
     -- if true the tree will resize itself after opening a file

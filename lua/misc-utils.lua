@@ -37,6 +37,8 @@ opt("b", "smartindent", true)
 
 vim.cmd("set colorcolumn=80")
 
+vim.cmd("set laststatus=80")
+
 local M = {}
 
 function M.is_buffer_empty()
