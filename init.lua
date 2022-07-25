@@ -60,5 +60,4 @@ vim.cmd(
 vim.cmd([[autocmd FocusGained * checktime]], false)
 
 require "whichkey"
-require "dashboard"
 require("nvim_comment").setup()

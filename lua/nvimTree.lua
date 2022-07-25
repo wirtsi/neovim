@@ -5,15 +5,15 @@ vim.o.termguicolors = true
 g.nvim_tree_side = "left"
 g.nvim_tree_width = 25
 -- g.nvim_tree_indent_markers = 1
-g.nvim_tree_git_hl = 1
-g.nvim_tree_root_folder_modifier = ":t"
+-- g.nvim_tree_git_hl = 1
+-- g.nvim_tree_root_folder_modifier = ":t"
 g.nvim_tree_allow_resize = 1
 
-g.nvim_tree_show_icons = {
-    git = 1,
-    folders = 1,
-    files = 1
-}
+-- g.nvim_tree_show_icons = {
+--   git = 1,
+--   folders = 1,
+--   files = 1
+-- }
 
 g.actions = {
   open_file = {
@@ -21,13 +21,14 @@ g.actions = {
   }
 }
 g.renderer = {
-  indent_markers = 1
-}
-
-g.nvim_tree_icons = {
-    default = "",
-    symlink = "",
-    git = {
+  indent_markers = 1,
+  highlight_git = 1,
+  root_folder_modifier = ":t",
+  icons = {
+    glyphs = {
+      default = "",
+      symlink = "",
+      git = {
         unstaged = "✗",
         staged = "✓",
         unmerged = "",
@@ -35,37 +36,61 @@ g.nvim_tree_icons = {
         untracked = "★",
         deleted = "",
         ignored = "◌"
-    },
-    folder = {
+      },
+      folder = {
         default = "",
         open = "",
         symlink = "",
         empty = "",
         empty_open = "",
         symlink_open = ""
+      }
     }
+  }
 }
+
+-- g.nvim_tree_icons = {
+--   default = "",
+--   symlink = "",
+--   git = {
+--     unstaged = "✗",
+--     staged = "✓",
+--     unmerged = "",
+--     renamed = "➜",
+--     untracked = "★",
+--     deleted = "",
+--     ignored = "◌"
+--   },
+--   folder = {
+--     default = "",
+--     open = "",
+--     symlink = "",
+--     empty = "",
+--     empty_open = "",
+--     symlink_open = ""
+--   }
+-- }
 -- following options are the default
-require'nvim-tree'.setup {
+require 'nvim-tree'.setup {
   -- disables netrw completely
-  disable_netrw       = true,
+  disable_netrw      = true,
   -- hijack netrw window on startup
-  hijack_netrw        = true,
+  hijack_netrw       = true,
   -- open the tree when running this setup function
-  open_on_setup       = false,
+  open_on_setup      = false,
   -- will not open on setup if the filetype is in this list
-  ignore_ft_on_setup  = {},
+  ignore_ft_on_setup = {},
   -- closes neovim automatically when the tree is the last **WINDOW** in the view
-  auto_close          = false,
+  -- auto_close          = false,
   -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
-  open_on_tab         = false,
+  open_on_tab        = false,
   -- hijack the cursor in the tree to put it at the start of the filename
-  hijack_cursor       = false,
-  -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually) 
-  update_cwd          = true,
+  hijack_cursor      = false,
+  -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
+  update_cwd         = true,
   -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
-  hide_dotfiles       = false,
-  tree_ignore         = {".git", "node_modules", ".cache"},
+  -- hide_dotfiles       = false,
+  -- tree_ignore         = {".git", "node_modules", ".cache"},
 
   update_focused_file = {
     -- enables the feature
@@ -87,11 +112,11 @@ require'nvim-tree'.setup {
 
   view = {
     -- width of the window, can be either a number (columns) or a string in `%`
-    width = "20%",
+    width = 20,
     -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
     side = 'left',
     -- if true the tree will resize itself after opening a file
-    auto_resize = true,
+    -- auto_resize = true,
     mappings = {
       -- custom only false will merge the list with the default mappings
       -- if true, it will only use your list to set the mappings
@@ -104,23 +129,22 @@ require'nvim-tree'.setup {
 -- Mappings for nvimtree
 
 vim.api.nvim_set_keymap(
-    "n",
-    "<leader>n",
-    ":NvimTreeToggle<CR>",
-    {
-        noremap = true,
-        silent = true
-    }
+  "n",
+  "<leader>n",
+  ":NvimTreeToggle<CR>",
+  {
+  noremap = true,
+  silent = true
+}
 )
 vim.api.nvim_set_keymap(
-    "n",
-    "<Leader>l",
-    ":NvimTreeFindFile<CR>",
-    {
-        noremap = true,
-        silent = true
-    }
+  "n",
+  "<Leader>l",
+  ":NvimTreeFindFile<CR>",
+  {
+  noremap = true,
+  silent = true
+}
 )
 
 -- local tree_cb = require "nvim-tree.config".nvim_tree_callback
-
