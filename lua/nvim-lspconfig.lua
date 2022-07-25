@@ -36,10 +36,9 @@ vim.fn.sign_define("DiagnosticSignWarn", { text = "!", texthl = "DiagnosticSignW
 vim.fn.sign_define("DiagnosticSignInformation", { text = "", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
+local opts = { noremap = true, silent = true }
+
 local function on_attach(client, bufnr)
-
-  local opts = { noremap = true, silent = true }
-
   local function buf_set_option(...)
     vim.api.nvim_buf_set_option(bufnr, ...)
   end
@@ -69,27 +68,6 @@ local function on_attach(client, bufnr)
   elseif client.resolved_capabilities.document_range_formatting then
     map("n", "<space>fm", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   end
-
-  if client.name == "tsserver" then
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
-    local ts_utils = require("nvim-lsp-ts-utils")
-    ts_utils.setup({
-      update_imports_on_move = true,
-      require_confirmation_on_move = true,
-      auto_inlay_hints = true,
-      inlay_hints_highlight = "Comment",
-      eslint_bin = "eslint_d",
-      eslint_enable_diagnostics = true,
-      eslint_enable_code_actions = true,
-      enable_formatting = true,
-      formatter = "eslint_d",
-    })
-    ts_utils.setup_client(client)
-    map("n", "gs", ":TSLspOrganize<CR>", opts)
-    map("n", "<space>rnf", ":TSLspRenameFile<CR>", opts)
-    map("n", "go", ":TSLspImportAll<CR>", opts)
-  end
 end
 
 local null_ls = require("null-ls")
@@ -109,62 +87,44 @@ null_ls.setup({
 local mason_lspconfig = require("mason-lspconfig")
 local lspconfig = require 'lspconfig'
 
-local servers = mason_lspconfig.get_installed_servers()
-
-for _, server in ipairs(servers) do
-  if (server.name == "tsserver") then break end
-  lspconfig[server].setup({
-    root_dir = function()
-      return vim.loop.cwd()
-    end,
-    handlers = handlers,
-    on_attach = on_attach,
-    -- init_options = server.name == "tsserver" and require("nvim-lsp-ts-utils").init_options,
-    settings = {
-      Lua = {
-        diagnostics = {
-          globals = { "vim" }
-        },
-        workspace = {
-          library = {
-            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-            [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
-          }
-        },
-        telemetry = {
-          enable = false
-        }
-      }
-    }
-  })
-end
-
-
-local function setup_servers()
-  local lsp_installer = require("nvim-lsp-installer")
-  --
-  local null_ls = require("null-ls")
-  null_ls.setup({
-    debug = true,
-    on_attach = on_attach,
-    sources = {
-      null_ls.builtins.diagnostics.eslint_d, -- eslint or eslint_d
-      null_ls.builtins.code_actions.eslint_d, -- eslint or eslint_d
-      null_ls.builtins.formatting.eslint_d -- prettier, eslint, eslint_d, or prettierd
-    },
-  })
-
-  local lspconf = require("lspconfig")
-  -- lspconf["null-ls"].setup({ on_attach = on_attach })
-
-  lsp_installer.on_server_ready(function(server)
-    server:setup({
+mason_lspconfig.setup_handlers({
+  function(server_name) -- default handler (optional)
+    require("lspconfig")[server_name].setup({
       root_dir = function()
         return vim.loop.cwd()
       end,
       handlers = handlers,
       on_attach = on_attach,
-      init_options = server.name == "tsserver" and require("nvim-lsp-ts-utils").init_options,
+    })
+  end,
+  ["tsserver"] = function()
+    lspconfig.tsserver.setup({
+      init_options = require("nvim-lsp-ts-utils").init_options,
+      on_attach = function(client)
+        local ts_utils = require("nvim-lsp-ts-utils")
+        ts_utils.setup({
+          update_imports_on_move = true,
+          require_confirmation_on_move = true,
+          auto_inlay_hints = true,
+          inlay_hints_highlight = "Comment",
+          -- eslint_bin = "eslint_d",
+          eslint_enable_diagnostics = true,
+          eslint_enable_code_actions = true,
+          enable_formatting = true,
+          -- formatter = "eslint_d",
+        })
+        ts_utils.setup_client(client)
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
+        map("n", "gs", ":TSLspOrganize<CR>", opts)
+        map("n", "<space>rnf", ":TSLspRenameFile<CR>", opts)
+        map("n", "go", ":TSLspImportAll<CR>", opts)
+      end
+    })
+
+  end,
+  ["sumneko_lua"] = function()
+    lspconfig.sumneko_lua.setup {
       settings = {
         Lua = {
           diagnostics = {
@@ -180,15 +140,10 @@ local function setup_servers()
             enable = false
           }
         }
+
       }
-    })
-  end)
-end
+    }
+  end,
 
--- setup_servers()
+})
 
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
--- require "lspinstall".post_install_hook = function()
---     setup_servers() -- reload installed servers
---     vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
--- end
