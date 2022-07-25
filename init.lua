@@ -29,6 +29,7 @@ require("multiline")
 require "indent-blankline"
 
 -- lsp stuff
+require "mason-config"
 require "nvim-lspconfig"
 require "compe-completion"
 require "true-zen"
@@ -44,7 +45,6 @@ require "nvimTree" -- file tree stuff
 -- git signs , lsp symbols etc
 require "gitsigns-nvim"
 require("nvim-autopairs").setup()
-require("lspkind").init()
 
 -- hide line numbers , statusline in specific buffers!
 vim.cmd(
@@ -61,3 +61,4 @@ vim.cmd([[autocmd FocusGained * checktime]], false)
 
 require "whichkey"
 require("nvim_comment").setup()
+require("dashboard-config")

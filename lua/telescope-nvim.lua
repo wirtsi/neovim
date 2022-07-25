@@ -59,6 +59,7 @@ require('telescope').setup {
 }
 
 require("telescope").load_extension("media_files")
+require("telescope").load_extension "file_browser"
 
 local opt = {noremap = true, silent = true}
 
@@ -83,6 +84,7 @@ vim.api.nvim_set_keymap("n", "<Leader>fw", [[<Cmd> Telescope live_grep<CR>]], op
 vim.api.nvim_set_keymap("n", "<Leader>fW", [[<Cmd> Telescope grep_string<CR>]], opt)
 vim.api.nvim_set_keymap("n", "<Leader>fn", [[<Cmd> DashboardNewFile<CR>]], opt)
 vim.api.nvim_set_keymap("n", "<Leader>fp", [[<Cmd> Telescope projects<CR>]], opt)
+vim.api.nvim_set_keymap("n", "<Leader>fb", [[<Cmd> Telescope file_browser<CR>]], opt)
 
 vim.api.nvim_set_keymap("n", "<Leader>bm", [[<Cmd> DashboardJumpMarks<CR>]], opt)
 vim.api.nvim_set_keymap("n", "<Leader>sl", [[<Cmd> SessionLoad<CR>]], opt)
