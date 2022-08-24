@@ -1,76 +1,5 @@
-local g = vim.g
-
 vim.o.termguicolors = true
 
-g.nvim_tree_side = "left"
-g.nvim_tree_width = 25
--- g.nvim_tree_indent_markers = 1
--- g.nvim_tree_git_hl = 1
--- g.nvim_tree_root_folder_modifier = ":t"
-g.nvim_tree_allow_resize = 1
-
--- g.nvim_tree_show_icons = {
---   git = 1,
---   folders = 1,
---   files = 1
--- }
-
-g.actions = {
-  open_file = {
-    quit_on_open = 0
-  }
-}
-g.renderer = {
-  indent_markers = 1,
-  highlight_git = 1,
-  root_folder_modifier = ":t",
-  icons = {
-    glyphs = {
-      default = "",
-      symlink = "",
-      git = {
-        unstaged = "✗",
-        staged = "✓",
-        unmerged = "",
-        renamed = "➜",
-        untracked = "★",
-        deleted = "",
-        ignored = "◌"
-      },
-      folder = {
-        default = "",
-        open = "",
-        symlink = "",
-        empty = "",
-        empty_open = "",
-        symlink_open = ""
-      }
-    }
-  }
-}
-
--- g.nvim_tree_icons = {
---   default = "",
---   symlink = "",
---   git = {
---     unstaged = "✗",
---     staged = "✓",
---     unmerged = "",
---     renamed = "➜",
---     untracked = "★",
---     deleted = "",
---     ignored = "◌"
---   },
---   folder = {
---     default = "",
---     open = "",
---     symlink = "",
---     empty = "",
---     empty_open = "",
---     symlink_open = ""
---   }
--- }
--- following options are the default
 require 'nvim-tree'.setup {
   -- disables netrw completely
   disable_netrw      = true,
@@ -89,9 +18,6 @@ require 'nvim-tree'.setup {
   -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
   update_cwd         = true,
   -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
-  -- hide_dotfiles       = false,
-  -- tree_ignore         = {".git", "node_modules", ".cache"},
-
   update_focused_file = {
     -- enables the feature
     enable      = true,
@@ -123,6 +49,50 @@ require 'nvim-tree'.setup {
       custom_only = false,
       -- list of mappings to set on the tree manually
       list = {}
+    }
+  },
+  renderer = {
+    indent_markers = {
+      enable = true
+    },
+    highlight_git = true,
+    root_folder_modifier = ":t",
+    icons = {
+      glyphs = {
+        default = "",
+        symlink = "",
+        git = {
+          unstaged = "✗",
+          staged = "✓",
+          unmerged = "",
+          renamed = "➜",
+          untracked = "★",
+          deleted = "",
+          ignored = "◌"
+        },
+        folder = {
+          default = "",
+          open = "",
+          symlink = "",
+          empty = "",
+          empty_open = "",
+          symlink_open = ""
+        }
+      }
+    }
+  },
+
+  git = {
+    enable = true,
+    ignore = true,
+    show_on_dirs = true,
+    timeout = 400,
+  },
+  filters = {
+    dotfiles = false,
+    custom = {
+      "^.git$",
+      "^.vscode$"
     }
   }
 }
