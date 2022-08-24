@@ -32,7 +32,6 @@ require "indent-blankline"
 require "mason-config"
 require "nvim-lspconfig"
 require "compe-completion"
-require "true-zen"
 
 
 -- project rooter
