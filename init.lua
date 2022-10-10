@@ -64,3 +64,5 @@ vim.cmd([[autocmd FocusGained * call NvimTreeToggle()]], false)
 require "whichkey"
 require("nvim_comment").setup()
 require("dashboard-config")
+require('leap').set_default_keymaps()
+

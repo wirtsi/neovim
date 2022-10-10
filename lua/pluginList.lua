@@ -63,6 +63,7 @@ return packer.startup(
     use "karb94/neoscroll.nvim"
     use "folke/which-key.nvim"
     use "lukas-reineke/indent-blankline.nvim"
+    use "ggandor/leap.nvim"
     use {
       'voldikss/vim-floaterm',
       opt = true,
