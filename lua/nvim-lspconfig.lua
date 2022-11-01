@@ -63,10 +63,10 @@ local function on_attach(client, bufnr)
   map('n', '<space>E', '<cmd>lua require\'telescope.builtin\'.diagnostics({previewer = false})<CR>', opts)
 
   -- Set some keybinds conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
-    map("n", "<space>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  elseif client.resolved_capabilities.document_range_formatting then
-    map("n", "<space>fm", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+  if client.server_capabilities.documentFormattingProvider then
+    map("n", "<space>fm", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
+  elseif client.server_capabilities.documentRangeFormattingProvider then
+    map("n", "<space>fm", "<cmd>lua vim.lsp.buf.range({async = true})<CR>", opts)
   end
 end
 
@@ -114,8 +114,8 @@ mason_lspconfig.setup_handlers({
           -- formatter = "eslint_d",
         })
         ts_utils.setup_client(client)
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
         map("n", "gs", ":TSLspOrganize<CR>", opts)
         map("n", "<space>rnf", ":TSLspRenameFile<CR>", opts)
         map("n", "go", ":TSLspImportAll<CR>", opts)

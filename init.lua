@@ -9,7 +9,7 @@ cmd "syntax on"
 
 -- load all plugins
 require "pluginList"
-cmd[[colorscheme tokyonight]]
+cmd[[colorscheme nord]]
 
 -- require("github-theme").setup({
 --   theme_style = "dark",
@@ -59,7 +59,7 @@ vim.cmd(
 vim.cmd([[autocmd FocusGained * checktime]], false)
 
 -- Reload nerd tree when coming from lazygit
-vim.cmd([[autocmd FocusGained * call NvimTreeToggle()]], false)
+vim.cmd([[autocmd FocusGained * NvimTreeRefresh]], false)
 
 require "whichkey"
 require("nvim_comment").setup()

@@ -109,7 +109,7 @@ vim.api.nvim_set_keymap(
 )
 vim.api.nvim_set_keymap(
   "n",
-  "<Leader>l",
+  "<Leader>nl",
   ":NvimTreeFindFile<CR>",
   {
   noremap = true,
