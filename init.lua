@@ -10,6 +10,7 @@ cmd "syntax on"
 -- load all plugins
 require "pluginList"
 cmd[[colorscheme nord]]
+g.nord_contrast = true
 
 -- require("github-theme").setup({
 --   theme_style = "dark",

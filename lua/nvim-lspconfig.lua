@@ -114,8 +114,8 @@ mason_lspconfig.setup_handlers({
           -- formatter = "eslint_d",
         })
         ts_utils.setup_client(client)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
+        -- client.server_capabilities.documentFormattingProvider = false
+        -- client.server_capabilities.documentRangeFormattingProvider = false
         map("n", "gs", ":TSLspOrganize<CR>", opts)
         map("n", "<space>rnf", ":TSLspRenameFile<CR>", opts)
         map("n", "go", ":TSLspImportAll<CR>", opts)
