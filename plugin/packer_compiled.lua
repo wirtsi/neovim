@@ -99,18 +99,13 @@ _G.packer_plugins = {
     path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  ["glow.nvim"] = {
-    loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/glow.nvim",
-    url = "https://github.com/npxbr/glow.nvim"
-  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
   ["lazygit.nvim"] = {
-    config = { "\27LJ\2\nn\0\0\2\0\4\0\a6\0\0\0009\0\1\0+\1\1\0=\1\2\0)\1\0\0=\1\3\0K\0\1\0%lazygit_floating_window_winblend(lazygit_floating_window_use_plenary\6g\bvim\0" },
+    config = { "\27LJ\2\n\25\0\0\1\0\2\0\0036\0\0\0009\0\1\0K\0\1\0\6g\bvim\0" },
     loaded = true,
     path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
     url = "https://github.com/kdheepak/lazygit.nvim"
@@ -225,15 +220,10 @@ _G.packer_plugins = {
     path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/startuptime.vim",
     url = "https://github.com/tweekmonster/startuptime.vim"
   },
-  ["telescope-file-browser.nvim"] = {
+  ["telescope-ui-select.nvim"] = {
     loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
-    url = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
-  },
-  ["telescope-media-files.nvim"] = {
-    loaded = true,
-    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim",
-    url = "https://github.com/nvim-telescope/telescope-media-files.nvim"
+    path = "/Users/floriankrause/.local/share/nvim/site/pack/packer/start/telescope-ui-select.nvim",
+    url = "https://github.com/nvim-telescope/telescope-ui-select.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
@@ -279,14 +269,32 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Config for: lazygit.nvim
 time([[Config for lazygit.nvim]], true)
-try_loadstring("\27LJ\2\nn\0\0\2\0\4\0\a6\0\0\0009\0\1\0+\1\1\0=\1\2\0)\1\0\0=\1\3\0K\0\1\0%lazygit_floating_window_winblend(lazygit_floating_window_use_plenary\6g\bvim\0", "config", "lazygit.nvim")
+try_loadstring("\27LJ\2\n\25\0\0\1\0\2\0\0036\0\0\0009\0\1\0K\0\1\0\6g\bvim\0", "config", "lazygit.nvim")
 time([[Config for lazygit.nvim]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file FloatermToggle lua require("packer.load")({'vim-floaterm'}, { cmd = "FloatermToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file FloatermNew lua require("packer.load")({'vim-floaterm'}, { cmd = "FloatermNew", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file FloatermSend lua require("packer.load")({'vim-floaterm'}, { cmd = "FloatermSend", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.api.nvim_create_user_command, 'FloatermNew', function(cmdargs)
+          require('packer.load')({'vim-floaterm'}, { cmd = 'FloatermNew', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-floaterm'}, { cmd = 'FloatermNew' }, _G.packer_plugins)
+          return vim.fn.getcompletion('FloatermNew ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'FloatermSend', function(cmdargs)
+          require('packer.load')({'vim-floaterm'}, { cmd = 'FloatermSend', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-floaterm'}, { cmd = 'FloatermSend' }, _G.packer_plugins)
+          return vim.fn.getcompletion('FloatermSend ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'FloatermToggle', function(cmdargs)
+          require('packer.load')({'vim-floaterm'}, { cmd = 'FloatermToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-floaterm'}, { cmd = 'FloatermToggle' }, _G.packer_plugins)
+          return vim.fn.getcompletion('FloatermToggle ', 'cmdline')
+      end})
 time([[Defining lazy-load commands]], false)
 
 

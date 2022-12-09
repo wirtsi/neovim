@@ -11,7 +11,7 @@ end
 -- You will likely want to reduce updatetime which affects CursorHold
 -- note: this setting is global and should be set only once
 vim.o.updatetime = 250
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {border="single", source="always", focusable=false})]]
+-- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {border="single", source="always", focusable=false})]]
 
 vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#1f2335]]
 vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
@@ -55,7 +55,7 @@ local function on_attach(client, bufnr)
   map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   map('n', '<space>D', '<cmd>Telescope lsp_type_definitions<CR><CR>', opts)
   map('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  map('n', '<space>ca', '<cmd>Telescope lsp_code_actions<CR>', opts)
+  map('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   map('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
   map('n', 'gE', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   map('n', 'ge', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
@@ -146,4 +146,3 @@ mason_lspconfig.setup_handlers({
   end,
 
 })
-

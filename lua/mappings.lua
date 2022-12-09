@@ -31,8 +31,8 @@ map("t", "<Leader>tt", [[<Cmd> FloatermToggle<CR>]], opt)
 -- vim.cmd("inoremap jh <Esc>")
 
 -- Commenter Keybinding
-map("n", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
-map("v", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
+-- map("n", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
+-- map("v", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
 
 -- LazyGit
 map("n", "<leader>lg", ":LazyGit<CR>",{noremap = true, silent = true})
@@ -48,7 +48,7 @@ map("c", "<up>", 'pumvisible() ? "<c-p>": "<up>"', { noremap = true, expr = true
 map("n", "<leader>w", ":set nowrap!<CR>",{noremap = true, silent = true})
 
 -- preview markdown
-map("n", "<leader>m", ":Glow<CR>",{noremap = true, silent = true})
+-- map("n", "<leader>m", ":Glow<CR>",{noremap = true, silent = true})
 
 -- floating terminal
 map("n", "<Leader>tt", [[<Cmd> FloatermToggle<CR>]], opt)

@@ -24,7 +24,7 @@ return packer.startup(
     }
     use "jose-elias-alvarez/null-ls.nvim"
     use "jose-elias-alvarez/nvim-lsp-ts-utils"
-    use { "npxbr/glow.nvim", run = ":GlowInstall" }
+    -- use { "npxbr/glow.nvim", run = ":GlowInstall" }
 
     use "lewis6991/gitsigns.nvim"
     use "akinsho/nvim-bufferline.lua"
@@ -45,15 +45,15 @@ return packer.startup(
     }
     use "kyazdani42/nvim-web-devicons"
     use "nvim-telescope/telescope.nvim"
-    use "nvim-telescope/telescope-file-browser.nvim"
-    use "nvim-telescope/telescope-media-files.nvim"
+    -- use "nvim-telescope/telescope-file-browser.nvim"
+    -- use "nvim-telescope/telescope-media-files.nvim"
     use "nvim-lua/popup.nvim"
     use {
       "kdheepak/lazygit.nvim",
       config = function()
         local g = vim.g
-        g.lazygit_floating_window_use_plenary = true
-        g.lazygit_floating_window_winblend = 0
+        -- g.lazygit_floating_window_use_plenary = true
+        -- g.lazygit_floating_window_winblend = 0
       end,
     }
     -- misc

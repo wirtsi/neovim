@@ -25,7 +25,7 @@ vim.g.mapleader = " "
 
 -- MAPPINGS
 map("n", "bn", [[<Cmd>tabnew<CR>]], opt) -- new tab
-map("n", "bq", [[<Cmd>bdelete<CR> | BufferLineCycleNext<CR>]], opt) -- close tab
+map("n", "bq", [[<Cmd>bdelete<CR>]], opt) -- close tab
 
 -- move between tabs
 map("n", "<TAB>", [[<Cmd>BufferLineCycleNext<CR>]], opt)

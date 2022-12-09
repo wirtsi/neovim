@@ -1,7 +1,7 @@
 local actions = require('telescope.actions')
 -- require("telescope").load_extension('projects')
 require('telescope').setup {
-    defaults = {
+  defaults = {
     --     -- vimgrep_arguments = {
     --     --     "rg",
     --     --     "--color=never",
@@ -31,7 +31,7 @@ require('telescope').setup {
     --         prompt_position = "bottom",
     --     },
     --     file_sorter = require "telescope.sorters".get_fuzzy_file,
-        -- file_ignore_patterns = {"node_modules"},
+    -- file_ignore_patterns = {"node_modules"},
     --     generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
     --     winblend = 0,
     --     border = {},
@@ -55,13 +55,13 @@ require('telescope').setup {
     --         filetypes = {"png", "webp", "jpg", "jpeg"},
     --         find_cmd = "rg" -- find command (defaults to `fd`)
     --     }
-    }
+  }
 }
 
 -- require("telescope").load_extension("media_files")
 -- require("telescope").load_extension "file_browser"
 
-local opt = {noremap = true, silent = true}
+local opt = { noremap = true, silent = true }
 
 vim.g.mapleader = " "
 
