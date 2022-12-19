@@ -15,7 +15,7 @@ return packer.startup(
 
     -- lang stuff
     use "nvim-treesitter/nvim-treesitter"
-    use "hrsh7th/nvim-compe"
+    -- use "hrsh7th/nvim-compe"
     use "nvim-lua/plenary.nvim"
     use {
       "williamboman/mason.nvim",
@@ -24,6 +24,12 @@ return packer.startup(
     }
     use "jose-elias-alvarez/null-ls.nvim"
     use "jose-elias-alvarez/nvim-lsp-ts-utils"
+    use "hrsh7th/cmp-nvim-lsp"
+    use "hrsh7th/cmp-buffer"
+    use "hrsh7th/cmp-path"
+    use "hrsh7th/cmp-cmdline"
+    use "hrsh7th/nvim-cmp"
+    use "onsails/lspkind.nvim"
     -- use { "npxbr/glow.nvim", run = ":GlowInstall" }
 
     use "lewis6991/gitsigns.nvim"
@@ -64,6 +70,7 @@ return packer.startup(
     use "folke/which-key.nvim"
     use "lukas-reineke/indent-blankline.nvim"
     use "ggandor/leap.nvim"
+    use 'famiu/bufdelete.nvim'
     use {
       'voldikss/vim-floaterm',
       opt = true,

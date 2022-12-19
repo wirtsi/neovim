@@ -1,4 +1,5 @@
 -- Mappings.
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local function map(mode, lhs, rhs, opts)
   local options = { noremap = true }
@@ -11,7 +12,7 @@ end
 -- You will likely want to reduce updatetime which affects CursorHold
 -- note: this setting is global and should be set only once
 vim.o.updatetime = 250
--- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {border="single", source="always", focusable=false})]]
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {border="single", source="always", focusable=false})]]
 
 vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#1f2335]]
 vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
@@ -26,6 +27,7 @@ local handlers = {
     signs = true,
     underline = true,
     update_in_insert = false,
+
   })
 }
 
@@ -43,7 +45,7 @@ local function on_attach(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, ...)
   end
 
-  buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+  -- buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
   map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   map('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts)
@@ -95,11 +97,13 @@ mason_lspconfig.setup_handlers({
       end,
       handlers = handlers,
       on_attach = on_attach,
+      capabilities = capabilities
     })
   end,
   ["tsserver"] = function()
     lspconfig.tsserver.setup({
       init_options = require("nvim-lsp-ts-utils").init_options,
+      capabilities = capabilities,
       on_attach = function(client)
         local ts_utils = require("nvim-lsp-ts-utils")
         ts_utils.setup({
@@ -108,9 +112,9 @@ mason_lspconfig.setup_handlers({
           auto_inlay_hints = true,
           inlay_hints_highlight = "Comment",
           -- eslint_bin = "eslint_d",
-          eslint_enable_diagnostics = true,
+          eslint_enable_diagnostics = false,
           eslint_enable_code_actions = true,
-          enable_formatting = true,
+          enable_formatting = false,
           -- formatter = "eslint_d",
         })
         ts_utils.setup_client(client)

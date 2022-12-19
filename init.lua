@@ -2,14 +2,14 @@ local g = vim.g
 g.mapleader = " "
 local cmd = vim.cmd
 g.auto_save = 0
-g.wrap=1
+g.wrap = 1
 g.pumblend = 0
 cmd "syntax on"
 
 
 -- load all plugins
 require "pluginList"
-cmd[[colorscheme nord]]
+cmd [[colorscheme nord]]
 g.nord_contrast = true
 
 -- require("github-theme").setup({
@@ -18,9 +18,7 @@ g.nord_contrast = true
 -- })
 require "nvim-reload"
 require "misc-utils"
-
 require "top-bufferline"
-
 require "statusline"
 
 require("colorizer").setup()
@@ -32,7 +30,7 @@ require "indent-blankline"
 -- lsp stuff
 require "mason-config"
 require "nvim-lspconfig"
-require "compe-completion"
+require "cmp-completion"
 
 
 -- project rooter
@@ -47,14 +45,11 @@ require "gitsigns-nvim"
 require("nvim-autopairs").setup()
 
 -- hide line numbers , statusline in specific buffers!
-vim.cmd(
-    [[
+vim.cmd([[
    au BufEnter term://* setlocal nonumber
    au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
    au BufEnter term://* set laststatus=0 
-]],
-    false
-)
+]], false)
 
 -- notify file change
 vim.cmd([[autocmd FocusGained * checktime]], false)
@@ -66,4 +61,3 @@ require "whichkey"
 require("nvim_comment").setup()
 require("dashboard-config")
 require('leap').set_default_keymaps()
-
