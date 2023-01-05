@@ -150,6 +150,9 @@ require("lazy").setup {
     config = require("lsp-config"),
   },
   { "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      "mrjones2014/nvim-ts-rainbow"
+    },
     build = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup {
@@ -166,11 +169,20 @@ require("lazy").setup {
           "vim",
           "help",
           "rust",
-          "go"
+          "go",
+          "typescript"
         },
         highlight = {
           enable = true,
           use_languagetree = true
+        },
+        rainbow = {
+          enable = true,
+          -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+          extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+          max_file_lines = nil, -- Do not enable for files with more than n lines, int
+          -- colors = {}, -- table of hex strings
+          -- termcolors = {} -- table of colour name strings
         },
         incremental_selection = {
           enable = true,
@@ -300,7 +312,7 @@ require("lazy").setup {
       { "<leader>9", "<Cmd>BufferLineGoToBuffer 9<CR>" },
     }
   },
-  { "norcalli/nvim-colorizer.lua", config = true, lazy = false },
+  -- { "norcalli/nvim-colorizer.lua", config = true, lazy = false },
   { "windwp/nvim-autopairs", lazy = false, config = true },
   { "alvan/vim-closetag", lazy = false },
   { "907th/vim-auto-save", lazy = false },
