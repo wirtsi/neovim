@@ -312,7 +312,7 @@ require("lazy").setup {
       { "<leader>9", "<Cmd>BufferLineGoToBuffer 9<CR>" },
     }
   },
-  -- { "norcalli/nvim-colorizer.lua", config = true, lazy = false },
+  { "norcalli/nvim-colorizer.lua", config = true, lazy = false },
   { "windwp/nvim-autopairs", lazy = false, config = true },
   { "alvan/vim-closetag", lazy = false },
   { "907th/vim-auto-save", lazy = false },
