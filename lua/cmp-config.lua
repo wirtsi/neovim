@@ -27,8 +27,6 @@ cmp.setup({
     })
   },
   mapping = {
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if not cmp.select_next_item() then
         if vim.bo.buftype ~= 'prompt' and has_words_before() then
@@ -73,17 +71,8 @@ cmp.setup({
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp', keyword_length = 3 },
-  }, {
     { name = 'buffer', keyword_length = 3 },
-  })
-})
-
--- Set configuration for specific filetype.
-cmp.setup.filetype('gitcommit', {
-  sources = cmp.config.sources({
-    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-  }, {
-    { name = 'buffer' },
+    { name = 'nerdfont' },
   })
 })
 
@@ -99,8 +88,7 @@ cmp.setup.cmdline({ '/', '?' }, {
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
-    { name = 'path', keyword_length = 3 }
-  }, {
-    { name = 'cmdline', keyword_length = 3 }
+    { name = 'path' },
+    { name = 'cmdline' }
   })
 })

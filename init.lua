@@ -3,6 +3,7 @@
 -------------------------------------------------------------------------------
 -- globals
 vim.g.mapleader = " "
+vim.g.pumblend = 0
 
 local scopes = { o = vim.o, b = vim.bo, w = vim.wo }
 
@@ -132,11 +133,11 @@ require("lazy").setup {
       "hrsh7th/nvim-cmp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
-      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-cmdline",
+      "dmitmel/cmp-cmdline-history",
+      "chrisgrieser/cmp-nerdfont",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lua",
-      "L3MON4D3/LuaSnip",
-      "rafamadriz/friendly-snippets",
       "onsails/lspkind.nvim"
     },
     config = require("lsp-config"),
