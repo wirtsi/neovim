@@ -26,6 +26,7 @@ local opts = {}
 
 -- terminal escape
 map("t", "<esc>", [[<C-\><C-n>]], opts)
+map("t", "<leader>tt", [[<C-\><C-n>ToggleTerm<cr>]], opts)
 -- Use cursor to select
 -- map("c", "<down>", 'pumvisible() ? "<c-n>": "<down>"', { noremap = true, expr = true, silent = false })
 -- map("c", "<up>", 'pumvisible() ? "<c-p>": "<up>"', { noremap = true, expr = true, silent = false })
@@ -68,8 +69,6 @@ vim.cmd([[autocmd Filetype yaml setlocal expandtab tabstop=2 shiftwidth=2 softta
 vim.cmd([[autocmd Filetype tf setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2]])
 -- notify file change
 vim.cmd([[autocmd FocusGained * checktime]], false)
--- Reload nerd tree when coming from lazygit
--- vim.cmd([[autocmd FocusGained * NvimTreeRefresh]], false)
 
 -------------------------------------------------------------------------------
 -- Bootstrap Package Manager
@@ -104,10 +103,16 @@ require("lazy").setup {
       "kyazdani42/nvim-web-devicons",
       "MunifTanjim/nui.nvim"
     },
+    config = {
+      filesystem = {
+        use_libuv_file_watcher = true,
+        follow_current_file = true
+      }
+    },
     keys = {
       { "<Leader>n", "<CMD>Neotree toggle<CR>", mode = { "n" } }
     },
-    config = true },
+  },
   { "ethanholz/nvim-lastplace", config = true },
   { "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
@@ -115,12 +120,14 @@ require("lazy").setup {
     keys = {
       { "<Leader>ff", "<CMD>Telescope find_files<CR>", mode = { "n" } },
       { "<Leader>fw", "<CMD>Telescope live_grep<CR>", mode = { "n" } },
+      { "<Leader>fW", "<CMD>Telescope grep_string<CR>", mode = { "n" } },
       { "<Leader>fb", "<CMD>Telescope buffers<CR>", mode = { "n" } },
       { "<Leader>f", "<CMD>Telescope oldfiles<CR>", mode = { "n" } },
       { "<Leader>c", "<CMD>Telescope commands<CR>", mode = { "n" } },
       { "<Leader>r", "<CMD>Telescope resume<CR>", mode = { "n" } },
     },
-    config = true },
+    config = true
+  },
   { "williamboman/mason.nvim",
     dependencies = {
       "neovim/nvim-lspconfig",
@@ -161,7 +168,19 @@ require("lazy").setup {
           "rust",
           "go"
         },
-        highlight = { enable = true, }
+        highlight = {
+          enable = true,
+          use_languagetree = true
+        },
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = "gnn",
+            node_incremental = "grn",
+            scope_incremental = "grc",
+            node_decremental = "grm",
+          },
+        },
       }
     end },
   { "terrortylor/nvim-comment",
@@ -220,8 +239,8 @@ require("lazy").setup {
     keys = {
       { "<Leader>lg", "<cmd>lua _lazygit_toggle()<CR>" },
       { "<Leader>tt", "<Cmd>ToggleTermToggleAll<CR>" },
-      { "<Leader>th", "<Cmd>ToggleTerm direction=horizontal<CR>" },
-      { "<Leader>tv", "<Cmd>ToggleTerm direction=vertical size=40<CR>" }
+      { "<Leader>th", "<Cmd>exe v:count1 . \"ToggleTerm direction=horizontal\"<CR>" },
+      { "<Leader>tv", "<Cmd>exe v:count 1. \"ToggleTerm direction=vertical size=40\"<CR>" }
     }
   },
   { "lukas-reineke/indent-blankline.nvim",
