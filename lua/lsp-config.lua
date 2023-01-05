@@ -143,6 +143,7 @@ local config = function()
   })
 
   vim.diagnostic.config { virtual_text = true }
+  require("cmp-config")
 end
 
 return config

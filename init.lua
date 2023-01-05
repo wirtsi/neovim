@@ -26,8 +26,8 @@ local opts = {}
 -- terminal escape
 map("t", "<esc>", [[<C-\><C-n>]], opts)
 -- Use cursor to select
-map("c", "<down>", 'pumvisible() ? "<c-n>": "<down>"', { noremap = true, expr = true, silent = false })
-map("c", "<up>", 'pumvisible() ? "<c-p>": "<up>"', { noremap = true, expr = true, silent = false })
+-- map("c", "<down>", 'pumvisible() ? "<c-n>": "<down>"', { noremap = true, expr = true, silent = false })
+-- map("c", "<up>", 'pumvisible() ? "<c-p>": "<up>"', { noremap = true, expr = true, silent = false })
 
 opt("o", "ruler", false)
 opt("o", "showmode", false)
@@ -137,6 +137,7 @@ require("lazy").setup {
       "hrsh7th/cmp-nvim-lua",
       "L3MON4D3/LuaSnip",
       "rafamadriz/friendly-snippets",
+      "onsails/lspkind.nvim"
     },
     config = require("lsp-config"),
   },
