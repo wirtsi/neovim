@@ -206,9 +206,8 @@ require("lazy").setup {
       { "<C-#>", "<C-\\><C-N><CMD>CommentToggle<CR>ji", mode = { "i" } },
       { "<C-#>", ":'<,'>CommentToggle<CR>gv<esc>j", mode = { "v" } },
     },
-    config = function()
-      require("nvim_comment").setup()
-    end },
+    config = true
+  },
   { "fedepujol/move.nvim",
     keys = {
       { "<A-Down>", ":MoveLine(1)<CR>", mode = { "n" } },
@@ -234,7 +233,6 @@ require("lazy").setup {
         buffer = true,
         ["n >"] = { expr = true, '&diff ? \']c\' : \'<cmd>lua require"gitsigns".next_hunk()<CR>\'' },
         ["n <"] = { expr = true, '&diff ? \'[c\' : \'<cmd>lua require"gitsigns".prev_hunk()<CR>\'' },
-        -- ["<leader>bl"] = '<cmd>lua require"gitsigns".blame_line()<CR>'
       },
       watch_gitdir = {
         interval = 100
@@ -242,6 +240,10 @@ require("lazy").setup {
       sign_priority = 5,
       status_formatter = nil -- Use default
     },
+    keys = {
+      { "<leader>bl", '<cmd>lua require("gitsigns").blame_line()<CR>', mode = { "n" } }
+    },
+    lazy = false
   },
   { "akinsho/toggleterm.nvim",
     -- config = { open_mapping = [[<leader>tt]], direction = "tab" }
