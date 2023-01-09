@@ -38,4 +38,3 @@
   "toggleterm.nvim": { "branch": "main", "commit": "b02a1674bd0010d7982b056fd3df4f717ff8a57a" },
   "vim-auto-save": { "branch": "master", "commit": "2e3e54ea4c0fc946c21b0a4ee4c1c295ba736ee8" },
   "vim-closetag": { "branch": "master", "commit": "d0a562f8bdb107a50595aefe53b1a690460c3822" }
-}
