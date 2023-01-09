@@ -25,8 +25,13 @@ end
 local opts = {}
 
 -- terminal escape
-map("t", "<esc>", [[<C-\><C-n>]], opts)
-map("t", "<leader>tt", [[<C-\><C-n>ToggleTerm<cr>]], opts)
+-- we don't allow escaping terminal mode deliberately
+map("t", "<C-+>", [[<C-\><C-n><cmd>ToggleTerm<cr>]], opts)
+map("t", "<C-w><up>", [[<cmd>wincmd k<cr>]], opts)
+map("t", "<C-w><down>", [[<cmd>wincmd k<cr>]], opts)
+map("t", "<C-w><left>", [[<cmd>wincmd h<cr>]], opts)
+map("t", "<C-w><right>", [[<cmd>wincmd l<cr>]], opts)
+
 -- Use cursor to select
 -- map("c", "<down>", 'pumvisible() ? "<c-n>": "<down>"', { noremap = true, expr = true, silent = false })
 -- map("c", "<up>", 'pumvisible() ? "<c-p>": "<up>"', { noremap = true, expr = true, silent = false })
@@ -217,7 +222,7 @@ require("lazy").setup {
         buffer = true,
         ["n >"] = { expr = true, '&diff ? \']c\' : \'<cmd>lua require"gitsigns".next_hunk()<CR>\'' },
         ["n <"] = { expr = true, '&diff ? \'[c\' : \'<cmd>lua require"gitsigns".prev_hunk()<CR>\'' },
-        ["n <leader>bl"] = '<cmd>lua require"gitsigns".blame_line()<CR>'
+        -- ["<leader>bl"] = '<cmd>lua require"gitsigns".blame_line()<CR>'
       },
       watch_gitdir = {
         interval = 100
@@ -238,7 +243,7 @@ require("lazy").setup {
     end,
     keys = {
       { "<Leader>lg", "<cmd>lua _lazygit_toggle()<CR>" },
-      { "<Leader>tt", "<Cmd>ToggleTermToggleAll<CR>" },
+      { "<C-+>", "<Cmd>ToggleTermToggleAll<CR>" },
       { "<Leader>th", "<Cmd>exe v:count1 . \"ToggleTerm direction=horizontal\"<CR>" },
       { "<Leader>tv", "<Cmd>exe v:count 1. \"ToggleTerm direction=vertical size=40\"<CR>" }
     }
