@@ -26,11 +26,13 @@ local opts = {}
 
 -- terminal escape
 -- we don't allow escaping terminal mode deliberately
-map("t", "<C-+>", [[<C-\><C-n><cmd>ToggleTerm<cr>]], opts)
+map("t", "<C-ä>", [[<C-\><C-n><cmd>ToggleTermToggleAll<cr>]], opts)
 map("t", "<C-w><up>", [[<cmd>wincmd k<cr>]], opts)
 map("t", "<C-w><down>", [[<cmd>wincmd k<cr>]], opts)
 map("t", "<C-w><left>", [[<cmd>wincmd h<cr>]], opts)
 map("t", "<C-w><right>", [[<cmd>wincmd l<cr>]], opts)
+map("t", "<C-+>", [[<C-\><C-n><cmd>20winc +<cr>i]], opts)
+map("t", "<C-->", [[<C-\><C-n><cmd>20winc -<cr>i]], opts)
 
 -- Use cursor to select
 -- map("c", "<down>", 'pumvisible() ? "<c-n>": "<down>"', { noremap = true, expr = true, silent = false })
@@ -89,11 +91,14 @@ vim.opt.rtp:prepend(lazypath)
 -- Plugins
 -------------------------------------------------------------------------------
 require("lazy").setup {
-  { "shaunsingh/nord.nvim",
+  { "shaunsingh/nord.nvim" },
+  { "projekt0n/github-nvim-theme" },
+  { "folke/tokyonight.nvim",
     config = function()
       vim.opt.termguicolors = true
-      vim.cmd.colorscheme("nord")
-    end },
+      vim.cmd.colorscheme("tokyonight-moon")
+    end
+  },
   { "nvim-lualine/lualine.nvim",
     dependencies = "kyazdani42/nvim-web-devicons",
     config = function()
@@ -257,7 +262,7 @@ require("lazy").setup {
     end,
     keys = {
       { "<Leader>lg", "<cmd>lua _lazygit_toggle()<CR>" },
-      { "<C-+>", "<Cmd>ToggleTermToggleAll<CR>" },
+      { "<C-ä>", "<Cmd>ToggleTermToggleAll<CR>" },
       { "<Leader>th", "<Cmd>exe v:count1 . \"ToggleTerm direction=horizontal\"<CR>" },
       { "<Leader>tv", "<Cmd>exe v:count 1. \"ToggleTerm direction=vertical size=40\"<CR>" }
     }
@@ -323,5 +328,5 @@ require("lazy").setup {
   { "windwp/nvim-autopairs", lazy = false, config = true },
   { "alvan/vim-closetag", lazy = false },
   { "907th/vim-auto-save", lazy = false },
-  { 'editorconfig/editorconfig-vim', lazy = false }
+  { 'editorconfig/editorconfig-vim', lazy = false },
 }
