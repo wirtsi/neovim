@@ -77,6 +77,8 @@ vim.cmd([[autocmd Filetype tf setlocal expandtab tabstop=2 shiftwidth=2 softtabs
 
 -- notify file change
 vim.cmd([[autocmd FocusGained * checktime]], false)
+vim.cmd([[autocmd BufEnter term://* startinsert]])
+
 
 -- Reload nerd tree when coming from lazygit
 vim.cmd([[autocmd FocusGained * NvimTreeRefresh]], false)
@@ -195,10 +197,10 @@ require("lazy").setup {
         incremental_selection = {
           enable = true,
           keymaps = {
-            init_selection = "gnn",
-            node_incremental = "grn",
-            scope_incremental = "grc",
-            node_decremental = "grm",
+            init_selection = "<CR>",
+            node_incremental = "<CR>",
+            scope_incremental = "<S-CR>",
+            node_decremental = "<BS>",
           },
         },
       }
