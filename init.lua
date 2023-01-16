@@ -74,8 +74,12 @@ vim.cmd("set laststatus=80")
 vim.cmd([[autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4]])
 vim.cmd([[autocmd Filetype yaml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2]])
 vim.cmd([[autocmd Filetype tf setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2]])
+
 -- notify file change
 vim.cmd([[autocmd FocusGained * checktime]], false)
+
+-- Reload nerd tree when coming from lazygit
+vim.cmd([[autocmd FocusGained * NvimTreeRefresh]], false)
 
 -------------------------------------------------------------------------------
 -- Bootstrap Package Manager
@@ -107,21 +111,15 @@ require("lazy").setup {
     end
   },
   { "karb94/neoscroll.nvim", config = true },
-  { "nvim-neo-tree/neo-tree.nvim",
+  { "nvim-tree/nvim-tree.lua",
     dependencies = {
-      "nvim-lua/plenary.nvim",
       "kyazdani42/nvim-web-devicons",
-      "MunifTanjim/nui.nvim"
     },
-    config = {
-      filesystem = {
-        use_libuv_file_watcher = true,
-        follow_current_file = true
-      }
-    },
+    config = require("nvimtree-config"),
     keys = {
-      { "<Leader>n", "<CMD>Neotree toggle<CR>", mode = { "n" } }
+      { "<Leader>n", "<CMD>NvimTreeToggle<CR>", mode = { "n" } },
     },
+    lazy = false
   },
   { "ethanholz/nvim-lastplace", config = true },
   { "nvim-telescope/telescope.nvim",
@@ -211,7 +209,9 @@ require("lazy").setup {
       { "<C-#>", "<C-\\><C-N><CMD>CommentToggle<CR>ji", mode = { "i" } },
       { "<C-#>", ":'<,'>CommentToggle<CR>gv<esc>j", mode = { "v" } },
     },
-    config = true
+    config = function()
+      require("nvim_comment").setup()
+    end,
   },
   { "fedepujol/move.nvim",
     keys = {
