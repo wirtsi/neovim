@@ -99,7 +99,7 @@ local config = function()
           local ts_utils = require("nvim-lsp-ts-utils")
           ts_utils.setup({
             update_imports_on_move = true,
-            require_confirmation_on_move = true,
+            require_confirmation_on_move = false,
             auto_inlay_hints = true,
             inlay_hints_highlight = "Comment",
             -- eslint_bin = "eslint_d",
