@@ -180,7 +180,8 @@ require("lazy").setup {
           "help",
           "rust",
           "go",
-          "typescript"
+          "typescript",
+          "graphql"
         },
         highlight = {
           enable = true,
@@ -286,44 +287,61 @@ require("lazy").setup {
   },
   { "famiu/bufdelete.nvim",
   },
-  { "akinsho/nvim-bufferline.lua",
+  { 'romgrk/barbar.nvim',
+    requires = 'nvim-web-devicons',
     lazy = false,
+    init = function()
+      local nvim_tree_events = require('nvim-tree.events')
+      local bufferline_api = require('bufferline.api')
+
+      local function get_tree_size()
+        return require 'nvim-tree.view'.View.width
+      end
+
+      nvim_tree_events.subscribe('TreeOpen', function()
+        bufferline_api.set_offset(get_tree_size())
+      end)
+
+      nvim_tree_events.subscribe('Resize', function()
+        bufferline_api.set_offset(get_tree_size())
+      end)
+
+      nvim_tree_events.subscribe('TreeClose', function()
+        bufferline_api.set_offset(0)
+      end)
+    end,
+
     config = {
-      options = {
-        offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
-        buffer_close_icon = "",
-        modified_icon = "",
-        close_icon = "",
-        left_trunc_marker = "",
-        right_trunc_marker = "",
-        max_name_length = 14,
-        max_prefix_length = 13,
-        tab_size = 20,
-        show_tab_indicators = true,
-        enforce_regular_tabs = false,
-        view = "multiwindow",
-        show_buffer_close_icons = true,
-        separator_style = "thin",
-        diagnostics = "nvim_diagnostic",
-        numbers = "ordinal"
-      }
+      icons = 'both',
+      icon_separator_active = '▎',
+      icon_separator_inactive = '▎',
+      icon_close_tab = '',
+      icon_close_tab_modified = '●',
+      icon_pinned = '車',
+      diagnostics = {
+        [vim.diagnostic.severity.ERROR] = { enabled = true, icon = 'ﬀ' },
+        [vim.diagnostic.severity.WARN] = { enabled = false },
+        [vim.diagnostic.severity.INFO] = { enabled = false },
+        [vim.diagnostic.severity.HINT] = { enabled = true },
+      },
     },
     keys = {
       { "bn", "<Cmd>tabnew<CR>" },
-      { "bq", "<Cmd>Bdelete<CR>" },
-      { "<TAB>", "<Cmd>BufferLineCycleNext<CR>" },
-      { "<S-TAB>", "<Cmd>BufferLineCyclePrev<CR>" },
-      { "<leader><right>", "<Cmd>BufferLineCycleNext<CR>" },
-      { "<leader><left>", "<Cmd>BufferLineCyclePrev<CR>" },
-      { "<leader>1", "<Cmd>BufferLineGoToBuffer 1<CR>" },
-      { "<leader>2", "<Cmd>BufferLineGoToBuffer 2<CR>" },
-      { "<leader>3", "<Cmd>BufferLineGoToBuffer 3<CR>" },
-      { "<leader>4", "<Cmd>BufferLineGoToBuffer 4<CR>" },
-      { "<leader>5", "<Cmd>BufferLineGoToBuffer 5<CR>" },
-      { "<leader>6", "<Cmd>BufferLineGoToBuffer 6<CR>" },
-      { "<leader>7", "<Cmd>BufferLineGoToBuffer 7<CR>" },
-      { "<leader>8", "<Cmd>BufferLineGoToBuffer 8<CR>" },
-      { "<leader>9", "<Cmd>BufferLineGoToBuffer 9<CR>" },
+      { "bq", "<Cmd>BufferClose<CR>" },
+      { "bp", "<Cmd>BufferPin<CR>" },
+      { "<TAB>", "<Cmd>BufferNext<CR>" },
+      { "<S-TAB>", "<Cmd>BufferPrevious<CR>" },
+      { "<leader><right>", "<Cmd>BufferNext<CR>" },
+      { "<leader><left>", "<Cmd>BufferPrevious<CR>" },
+      { "<leader>1", "<Cmd>BufferGoto 1<CR>" },
+      { "<leader>2", "<Cmd>BufferGoto 2<CR>" },
+      { "<leader>3", "<Cmd>BufferGoto 3<CR>" },
+      { "<leader>4", "<Cmd>BufferGoto 4<CR>" },
+      { "<leader>5", "<Cmd>BufferGoto 5<CR>" },
+      { "<leader>6", "<Cmd>BufferGoto 6<CR>" },
+      { "<leader>7", "<Cmd>BufferGoto 7<CR>" },
+      { "<leader>8", "<Cmd>BufferGoto 8<CR>" },
+      { "<leader>9", "<Cmd>BufferGoto 9<CR>" },
     }
   },
   { "norcalli/nvim-colorizer.lua", config = true, lazy = false },

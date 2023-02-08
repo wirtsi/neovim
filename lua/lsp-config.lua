@@ -96,19 +96,19 @@ local config = function()
         init_options = require("nvim-lsp-ts-utils").init_options,
         capabilities = capabilities,
         on_attach = function(client)
-          local ts_utils = require("nvim-lsp-ts-utils")
-          ts_utils.setup({
-            update_imports_on_move = true,
-            require_confirmation_on_move = false,
-            auto_inlay_hints = true,
-            inlay_hints_highlight = "Comment",
-            -- eslint_bin = "eslint_d",
-            eslint_enable_diagnostics = false,
-            eslint_enable_code_actions = true,
-            enable_formatting = false,
-            -- formatter = "eslint_d",
-          })
-          ts_utils.setup_client(client)
+          -- local ts_utils = require("nvim-lsp-ts-utils")
+          -- ts_utils.setup({
+          --   update_imports_on_move = true,
+          --   require_confirmation_on_move = false,
+          --   auto_inlay_hints = true,
+          --   inlay_hints_highlight = "Comment",
+          --   -- eslint_bin = "eslint_d",
+          --   eslint_enable_diagnostics = false,
+          --   eslint_enable_code_actions = true,
+          --   enable_formatting = false,
+          --   -- formatter = "eslint_d",
+          -- })
+          -- ts_utils.setup_client(client)
           client.server_capabilities.documentFormattingProvider = false
           client.server_capabilities.documentRangeFormattingProvider = false
           map("n", "gs", ":TSLspOrganize<CR>", opts)

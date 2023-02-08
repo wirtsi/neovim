@@ -72,7 +72,6 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp', keyword_length = 3 },
     { name = 'buffer', keyword_length = 4 },
-    { name = 'nerdfont' },
   })
 })
 
@@ -88,7 +87,8 @@ cmp.setup.cmdline({ '/', '?' }, {
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
+    { name = 'cmdline_history' },
     { name = 'path' },
-    { name = 'cmdline' }
+    { name = 'cmdline', keyword_length = 4 }
   })
 })
