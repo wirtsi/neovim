@@ -116,10 +116,9 @@ local config = function()
           map("n", "go", ":TSLspImportAll<CR>", opts)
         end
       })
-
     end,
-    ["sumneko_lua"] = function()
-      lspconfig.sumneko_lua.setup {
+    ["lua_ls"] = function()
+      lspconfig.lua_ls.setup {
         settings = {
           Lua = {
             diagnostics = {
@@ -139,7 +138,6 @@ local config = function()
         }
       }
     end,
-
   })
 
   vim.diagnostic.config { virtual_text = true }
