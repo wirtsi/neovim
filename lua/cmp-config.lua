@@ -71,7 +71,7 @@ cmp.setup({
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp', keyword_length = 3 },
-    { name = 'buffer', keyword_length = 4 },
+    { name = 'buffer',   keyword_length = 4 },
   })
 })
 
@@ -83,12 +83,14 @@ cmp.setup.cmdline({ '/', '?' }, {
   }
 })
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
+  mapping = cmp.mapping.preset.cmdline({
+    ['<Down>'] = { c = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }) },
+    ['<Up>'] = { c = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }) },
+  }),
   sources = cmp.config.sources({
-    { name = 'cmdline_history' },
-    { name = 'path' },
-    { name = 'cmdline', keyword_length = 4 }
+    { name = 'cmdline' }
+  }, {
+    { name = 'path' }
   })
 })

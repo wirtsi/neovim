@@ -112,7 +112,7 @@ require("lazy").setup {
       require("lualine").setup(config)
     end
   },
-  { "karb94/neoscroll.nvim", config = true },
+  { "karb94/neoscroll.nvim",    config = true },
   { "nvim-tree/nvim-tree.lua",
     dependencies = {
       "kyazdani42/nvim-web-devicons",
@@ -128,13 +128,13 @@ require("lazy").setup {
     branch = "0.1.x",
     dependencies = "nvim-lua/plenary.nvim",
     keys = {
-      { "<Leader>ff", "<CMD>Telescope find_files<CR>", mode = { "n" } },
-      { "<Leader>fw", "<CMD>Telescope live_grep<CR>", mode = { "n" } },
+      { "<Leader>ff", "<CMD>Telescope find_files<CR>",  mode = { "n" } },
+      { "<Leader>fw", "<CMD>Telescope live_grep<CR>",   mode = { "n" } },
       { "<Leader>fW", "<CMD>Telescope grep_string<CR>", mode = { "n" } },
-      { "<Leader>fb", "<CMD>Telescope buffers<CR>", mode = { "n" } },
-      { "<Leader>f", "<CMD>Telescope oldfiles<CR>", mode = { "n" } },
-      { "<Leader>c", "<CMD>Telescope commands<CR>", mode = { "n" } },
-      { "<Leader>r", "<CMD>Telescope resume<CR>", mode = { "n" } },
+      { "<Leader>fb", "<CMD>Telescope buffers<CR>",     mode = { "n" } },
+      { "<Leader>f",  "<CMD>Telescope oldfiles<CR>",    mode = { "n" } },
+      { "<Leader>c",  "<CMD>Telescope commands<CR>",    mode = { "n" } },
+      { "<Leader>r",  "<CMD>Telescope resume<CR>",      mode = { "n" } },
     },
     config = true
   },
@@ -152,7 +152,6 @@ require("lazy").setup {
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
       "dmitmel/cmp-cmdline-history",
-      "chrisgrieser/cmp-nerdfont",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lua",
       "onsails/lspkind.nvim"
@@ -208,9 +207,9 @@ require("lazy").setup {
     end },
   { "terrortylor/nvim-comment",
     keys = {
-      { "<C-#>", "<CMD>CommentToggle<CR>j", mode = { "n" } },
+      { "<C-#>", "<CMD>CommentToggle<CR>j",             mode = { "n" } },
       { "<C-#>", "<C-\\><C-N><CMD>CommentToggle<CR>ji", mode = { "i" } },
-      { "<C-#>", ":'<,'>CommentToggle<CR>gv<esc>j", mode = { "v" } },
+      { "<C-#>", ":'<,'>CommentToggle<CR>gv<esc>j",     mode = { "v" } },
     },
     config = function()
       require("nvim_comment").setup()
@@ -218,12 +217,12 @@ require("lazy").setup {
   },
   { "fedepujol/move.nvim",
     keys = {
-      { "<A-Down>", ":MoveLine(1)<CR>", mode = { "n" } },
-      { "<A-Up>", ":MoveLine(-1)<CR>", mode = { "n" } },
-      { "<A-Down>", ":MoveBlock(1)<CR>", mode = { "v" } },
-      { "<A-Up>", ":MoveBlock(-1)<CR>", mode = { "v" } },
-      { "<A-Down>", "<C-\\><C-N>:MoveLine(1)<CR>i", mode = { "i" } },
-      { "<A-Up>", "<C-\\><C-N>:MoveLine(-1)<CR>i", mode = { "i" } },
+      { "<A-Down>", ":MoveLine(1)<CR>",              mode = { "n" } },
+      { "<A-Up>",   ":MoveLine(-1)<CR>",             mode = { "n" } },
+      { "<A-Down>", ":MoveBlock(1)<CR>",             mode = { "v" } },
+      { "<A-Up>",   ":MoveBlock(-1)<CR>",            mode = { "v" } },
+      { "<A-Down>", "<C-\\><C-N>:MoveLine(1)<CR>i",  mode = { "i" } },
+      { "<A-Up>",   "<C-\\><C-N>:MoveLine(-1)<CR>i", mode = { "i" } },
     } },
   { "lewis6991/gitsigns.nvim",
     config = {
@@ -265,7 +264,7 @@ require("lazy").setup {
     end,
     keys = {
       { "<Leader>lg", "<cmd>lua _lazygit_toggle()<CR>" },
-      { "<C-ä>", "<Cmd>ToggleTermToggleAll<CR>" },
+      { "<C-ä>",     "<Cmd>ToggleTermToggleAll<CR>" },
       { "<Leader>th", "<Cmd>exe v:count1 . \"ToggleTerm direction=horizontal\"<CR>" },
       { "<Leader>tv", "<Cmd>exe v:count 1. \"ToggleTerm direction=vertical size=40\"<CR>" }
     }
@@ -326,27 +325,27 @@ require("lazy").setup {
       },
     },
     keys = {
-      { "bn", "<Cmd>tabnew<CR>" },
-      { "bq", "<Cmd>BufferClose<CR>" },
-      { "bp", "<Cmd>BufferPin<CR>" },
-      { "<TAB>", "<Cmd>BufferNext<CR>" },
-      { "<S-TAB>", "<Cmd>BufferPrevious<CR>" },
+      { "bn",              "<Cmd>tabnew<CR>" },
+      { "bq",              "<Cmd>BufferClose<CR>" },
+      { "bp",              "<Cmd>BufferPin<CR>" },
+      { "<TAB>",           "<Cmd>BufferNext<CR>" },
+      { "<S-TAB>",         "<Cmd>BufferPrevious<CR>" },
       { "<leader><right>", "<Cmd>BufferNext<CR>" },
-      { "<leader><left>", "<Cmd>BufferPrevious<CR>" },
-      { "<leader>1", "<Cmd>BufferGoto 1<CR>" },
-      { "<leader>2", "<Cmd>BufferGoto 2<CR>" },
-      { "<leader>3", "<Cmd>BufferGoto 3<CR>" },
-      { "<leader>4", "<Cmd>BufferGoto 4<CR>" },
-      { "<leader>5", "<Cmd>BufferGoto 5<CR>" },
-      { "<leader>6", "<Cmd>BufferGoto 6<CR>" },
-      { "<leader>7", "<Cmd>BufferGoto 7<CR>" },
-      { "<leader>8", "<Cmd>BufferGoto 8<CR>" },
-      { "<leader>9", "<Cmd>BufferGoto 9<CR>" },
+      { "<leader><left>",  "<Cmd>BufferPrevious<CR>" },
+      { "<leader>1",       "<Cmd>BufferGoto 1<CR>" },
+      { "<leader>2",       "<Cmd>BufferGoto 2<CR>" },
+      { "<leader>3",       "<Cmd>BufferGoto 3<CR>" },
+      { "<leader>4",       "<Cmd>BufferGoto 4<CR>" },
+      { "<leader>5",       "<Cmd>BufferGoto 5<CR>" },
+      { "<leader>6",       "<Cmd>BufferGoto 6<CR>" },
+      { "<leader>7",       "<Cmd>BufferGoto 7<CR>" },
+      { "<leader>8",       "<Cmd>BufferGoto 8<CR>" },
+      { "<leader>9",       "<Cmd>BufferGoto 9<CR>" },
     }
   },
-  { "norcalli/nvim-colorizer.lua", config = true, lazy = false },
-  { "windwp/nvim-autopairs", lazy = false, config = true },
-  { "alvan/vim-closetag", lazy = false },
-  { "907th/vim-auto-save", lazy = false },
+  { "norcalli/nvim-colorizer.lua",   config = true, lazy = false },
+  { "windwp/nvim-autopairs",         lazy = false,  config = true },
+  { "alvan/vim-closetag",            lazy = false },
+  { "907th/vim-auto-save",           lazy = false },
   { 'editorconfig/editorconfig-vim', lazy = false },
 }

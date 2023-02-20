@@ -33,8 +33,7 @@ config = {
     -- the command arguments as a list
     args = {}
   },
-
-  view = {
+  view                = {
     -- width of the window, can be either a number (columns) or a string in `%`
     width = 30,
     -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
@@ -49,7 +48,7 @@ config = {
       list = {}
     }
   },
-  renderer = {
+  renderer            = {
     indent_markers = {
       enable = true
     },
@@ -79,14 +78,13 @@ config = {
       }
     }
   },
-
-  git = {
+  git                 = {
     enable = true,
     ignore = true,
     show_on_dirs = true,
     timeout = 400,
   },
-  filters = {
+  filters             = {
     dotfiles = false,
     custom = {
       "^.git$",
