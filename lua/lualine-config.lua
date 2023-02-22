@@ -23,6 +23,16 @@ local conditions = {
   end
 }
 
+local function maximize_status()
+  return vim.t.maximized and '   ' or ''
+end
+
+require('lualine').setup {
+  sections = {
+    lualine_c = { maximize_status }
+  }
+}
+
 -- Config
 local config = {
   options = {
@@ -163,6 +173,10 @@ ins_left {
   end,
   icon = ' LSP:',
   color = { fg = '#ffffff', gui = 'bold' }
+}
+
+ins_right {
+  maximize_status
 }
 
 -- Add components to right sections

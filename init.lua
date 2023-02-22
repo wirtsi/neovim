@@ -26,7 +26,7 @@ local opts = {}
 
 -- terminal escape
 -- we don't allow escaping terminal mode deliberately
-map("t", "<C-ä>", [[<C-\><C-n><cmd>ToggleTermToggleAll<cr>]], opts)
+map("t", "<C-ä>", [[<C-\><C-n><cmd>lua require('maximize').toggle()<cr>]], opts)
 map("t", "<C-w><up>", [[<cmd>wincmd k<cr>]], opts)
 map("t", "<C-w><down>", [[<cmd>wincmd k<cr>]], opts)
 map("t", "<C-w><left>", [[<cmd>wincmd h<cr>]], opts)
@@ -264,9 +264,10 @@ require("lazy").setup {
     end,
     keys = {
       { "<Leader>lg", "<cmd>lua _lazygit_toggle()<CR>" },
-      { "<C-ä>",     "<Cmd>ToggleTermToggleAll<CR>" },
-      { "<Leader>th", "<Cmd>exe v:count1 . \"ToggleTerm direction=horizontal\"<CR>" },
-      { "<Leader>tv", "<Cmd>exe v:count 1. \"ToggleTerm direction=vertical size=40\"<CR>" }
+      -- { "<C-ä>",     "<Cmd>ToggleTermToggleAll<CR>" },
+      { "th",         "<Cmd>exe v:count 1 . \"ToggleTerm direction=horizontal\"<CR>" },
+      { "tv",         "<Cmd>exe v:count 1 . \"ToggleTerm direction=vertical size=40\"<CR>" },
+      { "tt",         "<Cmd>exe v:count 1 . \"ToggleTerm direction=float\"<CR>" }
     }
   },
   { "lukas-reineke/indent-blankline.nvim",
@@ -348,4 +349,13 @@ require("lazy").setup {
   { "alvan/vim-closetag",            lazy = false },
   { "907th/vim-auto-save",           lazy = false },
   { 'editorconfig/editorconfig-vim', lazy = false },
+  {
+    'declancm/maximize.nvim', lazy = false,
+    config = function()
+      require('maximize').setup({ default_keymaps = false })
+    end,
+    keys = {
+      { "<C-ä>", "<Cmd>lua require('maximize').toggle()<CR>" },
+    }
+  }
 }
