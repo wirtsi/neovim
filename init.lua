@@ -143,10 +143,9 @@ require("lazy").setup {
       "neovim/nvim-lspconfig",
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "jose-elias-alvarez/nvim-lsp-ts-utils",
       "jose-elias-alvarez/null-ls.nvim",
+      "jose-elias-alvarez/typescript.nvim",
       "jay-babu/mason-null-ls.nvim",
-      "nvim-lsp-ts-utils",
       "hrsh7th/nvim-cmp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
@@ -160,7 +159,7 @@ require("lazy").setup {
   },
   { "nvim-treesitter/nvim-treesitter",
     dependencies = {
-      "mrjones2014/nvim-ts-rainbow"
+      "HiPhish/nvim-ts-rainbow2"
     },
     build = ":TSUpdate",
     config = function()
@@ -188,11 +187,9 @@ require("lazy").setup {
         },
         rainbow = {
           enable = true,
-          -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-          extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
           max_file_lines = nil, -- Do not enable for files with more than n lines, int
-          -- colors = {}, -- table of hex strings
-          -- termcolors = {} -- table of colour name strings
+          query = 'rainbow-parens',
+          strategy = require 'ts-rainbow.strategy.global',
         },
         incremental_selection = {
           enable = true,

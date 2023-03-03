@@ -92,30 +92,47 @@ local config = function()
       })
     end,
     ["tsserver"] = function()
-      lspconfig.tsserver.setup({
-        init_options = require("nvim-lsp-ts-utils").init_options,
-        capabilities = capabilities,
-        on_attach = function(client)
-          -- local ts_utils = require("nvim-lsp-ts-utils")
-          -- ts_utils.setup({
-          --   update_imports_on_move = true,
-          --   require_confirmation_on_move = false,
-          --   auto_inlay_hints = true,
-          --   inlay_hints_highlight = "Comment",
-          --   -- eslint_bin = "eslint_d",
-          --   eslint_enable_diagnostics = false,
-          --   eslint_enable_code_actions = true,
-          --   enable_formatting = false,
-          --   -- formatter = "eslint_d",
-          -- })
-          -- ts_utils.setup_client(client)
-          client.server_capabilities.documentFormattingProvider = false
-          client.server_capabilities.documentRangeFormattingProvider = false
-          map("n", "gs", ":TSLspOrganize<CR>", opts)
-          map("n", "<space>rnf", ":TSLspRenameFile<CR>", opts)
-          map("n", "go", ":TSLspImportAll<CR>", opts)
-        end
+      require("typescript").setup({
+        disable_commands = false, -- prevent the plugin from creating Vim commands
+        debug = false, -- enable debug logging for commands
+        go_to_source_definition = {
+          fallback = true, -- fall back to standard LSP definition on failure
+        },
+        server = { -- pass options to lspconfig's setup method
+          on_attach = function(client)
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+            map("n", "gs", ":TypescriptOrganizeImports<CR>", opts)
+            map("n", "<space>rnf", ":TypescriptRenameFile<CR>", opts)
+            map("n", "go", ":TypescriptAddMissingImports<CR>", opts)
+            map("n", "gsd", ":TypescriptGoToSourceDefinition<CR>", opts)
+          end
+        },
       })
+      -- lspconfig.tsserver.setup({
+      --   init_options = require("nvim-lsp-ts-utils").init_options,
+      --   capabilities = capabilities,
+      --   on_attach = function(client)
+      --     -- local ts_utils = require("nvim-lsp-ts-utils")
+      --     -- ts_utils.setup({
+      --     --   update_imports_on_move = true,
+      --     --   require_confirmation_on_move = false,
+      --     --   auto_inlay_hints = true,
+      --     --   inlay_hints_highlight = "Comment",
+      --     --   -- eslint_bin = "eslint_d",
+      --     --   eslint_enable_diagnostics = false,
+      --     --   eslint_enable_code_actions = true,
+      --     --   enable_formatting = false,
+      --     --   -- formatter = "eslint_d",
+      --     -- })
+      --     -- ts_utils.setup_client(client)
+      --     client.server_capabilities.documentFormattingProvider = false
+      --     client.server_capabilities.documentRangeFormattingProvider = false
+      --     map("n", "gs", ":TSLspOrganize<CR>", opts)
+      --     map("n", "<space>rnf", ":TSLspRenameFile<CR>", opts)
+      --     map("n", "go", ":TSLspImportAll<CR>", opts)
+      --   end
+      -- })
     end,
     ["lua_ls"] = function()
       lspconfig.lua_ls.setup {
