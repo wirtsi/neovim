@@ -33,6 +33,7 @@ map("t", "<C-w><left>", [[<cmd>wincmd h<cr>]], opts)
 map("t", "<C-w><right>", [[<cmd>wincmd l<cr>]], opts)
 map("t", "<C-+>", [[<C-\><C-n><cmd>20winc +<cr>i]], opts)
 map("t", "<C-->", [[<C-\><C-n><cmd>20winc -<cr>i]], opts)
+map("t", "<leader>tt", [[<C-\><C-n><cmd><leader>tt]], opts)
 
 -- Use cursor to select
 -- map("c", "<down>", 'pumvisible() ? "<c-n>": "<down>"', { noremap = true, expr = true, silent = false })
@@ -76,12 +77,13 @@ vim.cmd([[autocmd Filetype yaml setlocal expandtab tabstop=2 shiftwidth=2 softta
 vim.cmd([[autocmd Filetype tf setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2]])
 
 -- notify file change
-vim.cmd([[autocmd FocusGained * checktime]], false)
+vim.cmd([[autocmd FocusGained * checktime]])
 vim.cmd([[autocmd BufEnter term://* startinsert]])
 
 
 -- Reload nerd tree when coming from lazygit
-vim.cmd([[autocmd FocusGained * NvimTreeRefresh]], false)
+vim.cmd([[autocmd FocusGained * NvimTreeRefresh]])
+vim.cmd([[autocmd TermOpen * nnoremap <buffer><LeftRelease> <LeftRelease>i]])
 
 -------------------------------------------------------------------------------
 -- Bootstrap Package Manager
@@ -99,13 +101,15 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup {
   { "shaunsingh/nord.nvim" },
   { "projekt0n/github-nvim-theme" },
-  { "folke/tokyonight.nvim",
+  {
+    "folke/tokyonight.nvim",
     config = function()
       vim.opt.termguicolors = true
       vim.cmd.colorscheme("tokyonight-moon")
     end
   },
-  { "nvim-lualine/lualine.nvim",
+  {
+    "nvim-lualine/lualine.nvim",
     dependencies = "kyazdani42/nvim-web-devicons",
     config = function()
       local config = require("lualine-config")
@@ -113,7 +117,8 @@ require("lazy").setup {
     end
   },
   { "karb94/neoscroll.nvim",    config = true },
-  { "nvim-tree/nvim-tree.lua",
+  {
+    "nvim-tree/nvim-tree.lua",
     dependencies = {
       "kyazdani42/nvim-web-devicons",
     },
@@ -124,7 +129,8 @@ require("lazy").setup {
     lazy = false
   },
   { "ethanholz/nvim-lastplace", config = true },
-  { "nvim-telescope/telescope.nvim",
+  {
+    "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
     dependencies = "nvim-lua/plenary.nvim",
     keys = {
@@ -138,7 +144,8 @@ require("lazy").setup {
     },
     config = true
   },
-  { "williamboman/mason.nvim",
+  {
+    "williamboman/mason.nvim",
     dependencies = {
       "neovim/nvim-lspconfig",
       "williamboman/mason.nvim",
@@ -157,7 +164,8 @@ require("lazy").setup {
     },
     config = require("lsp-config"),
   },
-  { "nvim-treesitter/nvim-treesitter",
+  {
+    "nvim-treesitter/nvim-treesitter",
     dependencies = {
       "HiPhish/nvim-ts-rainbow2"
     },
@@ -183,7 +191,8 @@ require("lazy").setup {
         },
         highlight = {
           enable = true,
-          use_languagetree = true
+          use_languagetree = true,
+          additional_vim_regex_highlighting = false
         },
         rainbow = {
           enable = true,
@@ -201,8 +210,10 @@ require("lazy").setup {
           },
         },
       }
-    end },
-  { "terrortylor/nvim-comment",
+    end
+  },
+  {
+    "terrortylor/nvim-comment",
     keys = {
       { "<C-#>", "<CMD>CommentToggle<CR>j",             mode = { "n" } },
       { "<C-#>", "<C-\\><C-N><CMD>CommentToggle<CR>ji", mode = { "i" } },
@@ -212,7 +223,8 @@ require("lazy").setup {
       require("nvim_comment").setup()
     end,
   },
-  { "fedepujol/move.nvim",
+  {
+    "fedepujol/move.nvim",
     keys = {
       { "<A-Down>", ":MoveLine(1)<CR>",              mode = { "n" } },
       { "<A-Up>",   ":MoveLine(-1)<CR>",             mode = { "n" } },
@@ -220,8 +232,10 @@ require("lazy").setup {
       { "<A-Up>",   ":MoveBlock(-1)<CR>",            mode = { "v" } },
       { "<A-Down>", "<C-\\><C-N>:MoveLine(1)<CR>i",  mode = { "i" } },
       { "<A-Up>",   "<C-\\><C-N>:MoveLine(-1)<CR>i", mode = { "i" } },
-    } },
-  { "lewis6991/gitsigns.nvim",
+    }
+  },
+  {
+    "lewis6991/gitsigns.nvim",
     config = {
       signs = {
         add = { hl = "DiffAdd", text = "▌", numhl = "GitSignsAddNr" },
@@ -249,7 +263,8 @@ require("lazy").setup {
     },
     lazy = false
   },
-  { "akinsho/toggleterm.nvim",
+  {
+    "akinsho/toggleterm.nvim",
     -- config = { open_mapping = [[<leader>tt]], direction = "tab" }
     config = true,
     init = function()
@@ -267,7 +282,8 @@ require("lazy").setup {
       { "tt",         "<Cmd>exe v:count 1 . \"ToggleTerm direction=float\"<CR>" }
     }
   },
-  { "lukas-reineke/indent-blankline.nvim",
+  {
+    "lukas-reineke/indent-blankline.nvim",
     config = {
       char = "|",
       buftype_exclude = { "terminal" },
@@ -275,16 +291,17 @@ require("lazy").setup {
       show_trailing_blankline_indent = false,
       show_first_indent_level = false,
     }
-
   },
-  { "ggandor/leap.nvim",
+  {
+    "ggandor/leap.nvim",
     config = function()
       require("leap").set_default_keymaps()
     end
   },
   { "famiu/bufdelete.nvim",
   },
-  { 'romgrk/barbar.nvim',
+  {
+    'romgrk/barbar.nvim',
     requires = 'nvim-web-devicons',
     lazy = false,
     init = function()
@@ -307,20 +324,44 @@ require("lazy").setup {
         bufferline_api.set_offset(0)
       end)
     end,
-
     config = {
-      icons = 'both',
-      icon_separator_active = '▎',
-      icon_separator_inactive = '▎',
-      icon_close_tab = '',
-      icon_close_tab_modified = '●',
-      icon_pinned = '車',
-      diagnostics = {
-        [vim.diagnostic.severity.ERROR] = { enabled = true, icon = 'ﬀ' },
-        [vim.diagnostic.severity.WARN] = { enabled = false },
-        [vim.diagnostic.severity.INFO] = { enabled = false },
-        [vim.diagnostic.severity.HINT] = { enabled = true },
+      icons = {
+        -- Configure the base icons on the bufferline.
+        buffer_index = false,
+        buffer_number = false,
+        button = '',
+        -- Enables / disables diagnostic symbols
+        diagnostics = {
+          [vim.diagnostic.severity.ERROR] = { enabled = true, icon = 'ﬀ' },
+          [vim.diagnostic.severity.WARN] = { enabled = false },
+          [vim.diagnostic.severity.INFO] = { enabled = false },
+          [vim.diagnostic.severity.HINT] = { enabled = true },
+        },
+        filetype = {
+          -- Sets the icon's highlight group.
+          -- If false, will use nvim-web-devicons colors
+          custom_colors = false,
+          -- Requires `nvim-web-devicons` if `true`
+          enabled = true,
+        },
+        separator = { left = '▎', right = '' },
+        -- Configure the icons on the bufferline when modified or pinned.
+        -- Supports all the base icon options.
+        modified = { button = '●' },
+        pinned = { button = '車' },
+        -- Configure the icons on the bufferline based on the visibility of a buffer.
+        -- Supports all the base icon options, plus `modified` and `pinned`.
+        alternate = { filetype = { enabled = false } },
+        current = { buffer_index = true },
+        inactive = { button = '×' },
+        visible = { modified = { buffer_number = false } },
       },
+      -- icons = { buffer_index = true, filetype = { enabled = true },  },
+      -- icon_separator_active = '▎',
+      -- icon_separator_inactive = '▎',
+      -- icon_close_tab = '',
+      -- icon_close_tab_modified = '●',
+      -- icon_pinned = '車',
     },
     keys = {
       { "bn",              "<Cmd>tabnew<CR>" },
@@ -347,12 +388,40 @@ require("lazy").setup {
   { "907th/vim-auto-save",           lazy = false },
   { 'editorconfig/editorconfig-vim', lazy = false },
   {
-    'declancm/maximize.nvim', lazy = false,
+    'declancm/maximize.nvim',
+    lazy = false,
     config = function()
       require('maximize').setup({ default_keymaps = false })
     end,
     keys = {
       { "<C-ä>", "<Cmd>lua require('maximize').toggle()<CR>" },
     }
-  }
+  }, {
+  "Bryley/neoai.nvim",
+  dependencies = {
+    "MunifTanjim/nui.nvim",
+  },
+  cmd = {
+    "NeoAI",
+    "NeoAIOpen",
+    "NeoAIClose",
+    "NeoAIToggle",
+    "NeoAIContext",
+    "NeoAIContextOpen",
+    "NeoAIContextClose",
+    "NeoAIInject",
+    "NeoAIInjectCode",
+    "NeoAIInjectContext",
+    "NeoAIInjectContextCode",
+  },
+  keys = {
+    { "<leader>as", desc = "summarize text" },
+    { "<leader>ag", desc = "generate git message" },
+  },
+  config = function()
+    require("neoai").setup({
+      -- Options go here
+    })
+  end,
+}
 }

@@ -24,7 +24,7 @@ local config = function()
   -- format on save
   vim.cmd([[augroup fmt
     autocmd!
-    autocmd BufWritePre * undojoin | lua vim.lsp.buf.format({async = false})
+    autocmd BufWritePre * lua vim.lsp.buf.format({async = false})
   augroup END]])
 
   -- replace the default lsp diagnostic letters with prettier symbols
@@ -70,9 +70,9 @@ local config = function()
       return vim.loop.cwd()
     end,
     sources = {
-      null_ls.builtins.diagnostics.eslint_d, -- eslint or eslint_d
+      null_ls.builtins.diagnostics.eslint_d,  -- eslint or eslint_d
       null_ls.builtins.code_actions.eslint_d, -- eslint or eslint_d
-      null_ls.builtins.formatting.prettierd -- prettier, eslint, eslint_d, or prettierd
+      null_ls.builtins.formatting.prettierd   -- prettier, eslint, eslint_d, or prettierd
     },
   })
 
@@ -94,11 +94,12 @@ local config = function()
     ["tsserver"] = function()
       require("typescript").setup({
         disable_commands = false, -- prevent the plugin from creating Vim commands
-        debug = false, -- enable debug logging for commands
+        debug = false,            -- enable debug logging for commands
         go_to_source_definition = {
-          fallback = true, -- fall back to standard LSP definition on failure
+          fallback = true,        -- fall back to standard LSP definition on failure
         },
-        server = { -- pass options to lspconfig's setup method
+        server = {
+          -- pass options to lspconfig's setup method
           on_attach = function(client)
             client.server_capabilities.documentFormattingProvider = false
             client.server_capabilities.documentRangeFormattingProvider = false
@@ -151,7 +152,6 @@ local config = function()
               enable = false
             }
           }
-
         }
       }
     end,
