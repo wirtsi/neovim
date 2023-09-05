@@ -16,7 +16,7 @@ local function map(mode, lhs, rhs, opts)
 end
 local Util = require("lazyvim.util")
 local lazyterm = function()
-  Util.float_term(nil, { cwd = Util.get_root() })
+  Util.float_term(nil, {})
 end
 map("n", "<C-t>", lazyterm, { desc = "Terminal (root dir)" })
 map("t", "<C-t>", "<cmd>close<cr>", { desc = "Hide Terminal" })
@@ -24,3 +24,4 @@ map("n", "<S-TAB>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
 map("n", "<TAB>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
 map("n", "<leader><left>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
 map("n", "<leader><right>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+map("i", "<C-r>", "<C-o>gcc", { desc = "Comment in insert" })
