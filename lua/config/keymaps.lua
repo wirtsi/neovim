@@ -19,6 +19,12 @@ local lazyterm = function()
   Util.float_term(nil, {})
 end
 map("n", "<C-t>", lazyterm, { desc = "Terminal (root dir)" })
+map(
+  "i",
+  "<C-t>",
+  "<esc>:lua require('lazyvim.util').float_term(nil, {})<cr>",
+  { desc = "Terminal (root dir)", silent = true }
+)
 map("t", "<C-t>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 map("n", "<S-TAB>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
 map("n", "<TAB>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
