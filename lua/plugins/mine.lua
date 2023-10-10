@@ -86,6 +86,20 @@ return {
       })
     end,
   },
+  {
+    "rcarriga/nvim-notify",
+    enabled = false,
+  },
+  -- {
+  -- "folke/flash.nvim",
+  -- opts = {
+  -- modes = {
+  -- search = {
+  -- enabled = false,
+  -- },
+  -- },
+  -- },
+  -- },
 
   -- the opts function can also be used to change the default opts:
 
