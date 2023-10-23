@@ -16,7 +16,7 @@ local function map(mode, lhs, rhs, opts)
 end
 local Util = require("lazyvim.util")
 local lazyterm = function()
-  Util.float_term(nil, {})
+  Util.terminal.open(nil, {})
 end
 map("n", "<C-t>", lazyterm, { desc = "Terminal (root dir)" })
 map(
