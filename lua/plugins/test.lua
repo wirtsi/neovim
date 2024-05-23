@@ -1,7 +1,14 @@
 return {
   {
     "nvim-neotest/neotest",
-    dependencies = { "nvim-neotest/neotest-jest", "thenbe/neotest-playwright" },
+    dependencies = {
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "thenbe/neotest-playwright",
+      "nvim-neotest/neotest-jest",
+    },
     opts = function(_, opts)
       -- table.insert(
       --   opts.adapters,

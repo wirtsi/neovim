@@ -14,15 +14,15 @@ local function map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, opts)
   end
 end
-local Util = require("lazyvim.util")
 local lazyterm = function()
-  Util.terminal.open(nil, {})
+  LazyVim.terminal(nil, { cwd = LazyVim.root() })
 end
+
 map("n", "<C-t>", lazyterm, { desc = "Terminal (root dir)" })
 map(
   "i",
   "<C-t>",
-  "<esc>:lua require('lazyvim.util').float_term(nil, {})<cr>",
+  "<esc>:lua require('lazyvim.util').terminal(nil, {cwd = LazyVim.root() })<cr>",
   { desc = "Terminal (root dir)", silent = true }
 )
 map("t", "<C-t>", "<cmd>close<cr>", { desc = "Hide Terminal" })
