@@ -18,14 +18,14 @@ local lazyterm = function()
   LazyVim.terminal(nil, { cwd = LazyVim.root() })
 end
 
-map("n", "<C-t>", lazyterm, { desc = "Terminal (root dir)" })
+map("n", "<C-y>", lazyterm, { desc = "Terminal (root dir)" })
 map(
   "i",
-  "<C-t>",
+  "<C-y>",
   "<esc>:lua require('lazyvim.util').terminal(nil, {cwd = LazyVim.root() })<cr>",
   { desc = "Terminal (root dir)", silent = true }
 )
-map("t", "<C-t>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+map("t", "<C-y>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 map("n", "<S-TAB>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
 map("n", "<TAB>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
 map("n", "<leader><left>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
