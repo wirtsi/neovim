@@ -14,17 +14,10 @@ local function map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, opts)
   end
 end
-local lazyterm = function()
-  LazyVim.terminal(nil, { cwd = LazyVim.root() })
-end
-
-map("n", "<C-y>", lazyterm, { desc = "Terminal (root dir)" })
-map(
-  "i",
-  "<C-y>",
-  "<esc>:lua require('lazyvim.util').terminal(nil, {cwd = LazyVim.root() })<cr>",
-  { desc = "Terminal (root dir)", silent = true }
-)
+map("n", "<C-y>", function()
+  Snacks.terminal(nil, { cwd = LazyVim.root() })
+end, { desc = "Terminal (Root Dir)" })
+map("i", "<C-y>", "<C-o>:lua Snacks.terminal(nil, { cwd = LazyVim.root() })<cr>", { desc = "Terminal (root dir)" })
 map("t", "<C-y>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 map("n", "<S-TAB>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
 map("n", "<TAB>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
