@@ -16,7 +16,7 @@ if vim.g.neovide then
   vim.g.neovide_remember_window_position = true
   vim.g.neovide_cursor_antialiasing = true
   vim.o.guifont = "FiraCode NFM:h16" -- text below applies for VimScript
-  vim.g.neovide_fullscreen = true
+  vim.g.neovide_fullscreen = false
   -- Allow clipboard copy paste in neovim
   vim.api.nvim_set_keymap("", "<D-v>", "+p<CR>", { noremap = true, silent = true })
   vim.api.nvim_set_keymap("!", "<D-v>", "<C-R>+", { noremap = true, silent = true })
